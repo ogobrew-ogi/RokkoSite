@@ -1,0 +1,15 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600' width='800' height='600'>
+  <defs>
+    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#0d1b2a'/>
+      <stop offset='100%' stop-color='#16324a'/>
+    </linearGradient>
+  </defs>
+  <rect width='800' height='600' fill='url(#g)'/>
+  <rect x='16' y='16' width='768' height='568' fill='none' stroke='#c8a96e' stroke-width='2' stroke-dasharray='10 8' opacity='0.6'/>
+  <g font-family='DM Sans, Arial, sans-serif' text-anchor='middle'>
+    <text x='50%' y='46%' font-size='36' fill='#c8a96e' letter-spacing='2'>PLACEHOLDER</text>
+    <text x='50%' y='54%' font-size='24' fill='#a8d8ea'>Trip 10 &#183; Photo 2</text>
+    <text x='50%' y='61%' font-size='21' fill='rgba(255,255,255,0.55)'>images/31.svg &#183; recommended 800×600px</text>
+  </g>
+</svg>

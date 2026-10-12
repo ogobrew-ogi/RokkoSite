@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика за бисквитки — ROKKO</title>
+    <meta name="description" content="Политика за бисквитки на ROKKO Дневни Екскурзии — какви бисквитки използваме и как да ги управлявате.">
+    <meta name="robots" content="noindex, follow">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230d1b2a'/><text y='.9em' font-size='70' x='50%' dominant-baseline='middle' text-anchor='middle' fill='%23c8a96e' font-family='serif' font-style='italic'>R</text></svg>">
+    <meta name="theme-color" content="#0d1b2a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <noscript>
+        <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+    </noscript>
+
+    <style>
+        .legal-hero {
+            background: var(--navy);
+            padding: 10rem 5rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .legal-hero::before {
+            content: '';
+            position: absolute;
+            top: -200px; left: 50%;
+            transform: translateX(-50%);
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(33,150,196,0.10) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .legal-hero .section-tag { display: block; margin-bottom: 1rem; }
+        .legal-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            color: var(--white);
+            line-height: 1.2;
+        }
+        .legal-hero h1 em { font-style: italic; color: var(--sky); }
+        .legal-hero .title-rule { margin: 1.5rem auto 0; }
+        .legal-hero .legal-date {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase;
+        }
+        .legal-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 2rem 6rem;
+        }
+        .legal-body h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--navy);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .legal-body h2:first-child { margin-top: 0; }
+        .legal-body h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ocean);
+            margin: 2rem 0 0.6rem;
+        }
+        .legal-body p {
+            color: var(--text);
+            line-height: 1.85;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .legal-body ul {
+            margin: 0.5rem 0 1rem 1.4rem;
+            color: var(--text);
+            line-height: 1.85;
+            font-size: 0.95rem;
+        }
+        .legal-body ul li { margin-bottom: 0.4rem; }
+        .legal-body a { color: var(--ocean); text-decoration: underline; text-underline-offset: 3px; }
+        .legal-body a:hover { color: var(--azure); }
+        .legal-body .highlight-box {
+            background: var(--light);
+            border-left: 3px solid var(--azure);
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .legal-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ocean);
+            text-decoration: none;
+        }
+        .legal-back:hover { color: var(--azure); }
+
+        /* Cookie table */
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0 1.5rem;
+            font-size: 0.88rem;
+        }
+        .cookie-table th {
+            background: var(--navy);
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+        .cookie-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            vertical-align: top;
+        }
+        .cookie-table tr:last-child td { border-bottom: none; }
+        .cookie-table tr:nth-child(even) td { background: var(--light); }
+
+        @media (max-width: 768px) {
+            .legal-hero { padding: 8rem 2rem 3rem; }
+            .legal-body { padding: 3rem 1.25rem 5rem; }
+            .cookie-table { font-size: 0.8rem; }
+            .cookie-table th, .cookie-table td { padding: 0.6rem 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Към съдържанието</a>
+
+<!-- ==================== НАВИГАЦИЯ ==================== -->
+<nav id="navbar">
+    <a href="index.html" class="logo">RO<span>K</span>KO</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#exc-1">Лазурен залив</a></li>
+        <li><a href="index.html#exc-2">Горски рай</a></li>
+        <li><a href="index.html#exc-3">Слънчев хълм</a></li>
+        <li><a href="index.html#exc-4">Бялата чайка</a></li>
+        <li><a href="index.html#exc-5">Мраморни пещери</a></li>
+        <li><a href="excursions.html">Още екскурзии</a></li>
+        <li><a href="index.html#contact">Контакти</a></li>
+        <li class="lang-item">
+            <a class="lang-link" href="index-en.html" data-lang="en" aria-label="Switch to English">EN</a>
+        </li>
+    </ul>
+    <button class="nav-toggle" id="navToggle"
+            aria-label="Отвори менюто"
+            aria-expanded="false"
+            aria-controls="navLinks">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<div class="legal-hero">
+    <span class="section-tag">Правна информация</span>
+    <h1>Политика за <em>бисквитки</em></h1>
+    <div class="title-rule"></div>
+    <p class="legal-date">Последна актуализация: юни 2026 г.</p>
+</div>
+
+<!-- ==================== СЪДЪРЖАНИЕ ==================== -->
+<div class="legal-body" id="main-content">
+
+    <div class="highlight-box">
+        Тази страница обяснява какво са бисквитките, как ги използваме и как можете да управлявате настройките си. Продължавайки да използвате сайта, вие се съгласявате с използването на бисквитки съгласно тази политика.
+    </div>
+
+    <h2>1. Какво са бисквитките?</h2>
+    <p>Бисквитките (cookies) са малки текстови файлове, които се записват на вашето устройство когато посещавате даден уебсайт. Те се използват широко, за да накарат уебсайтовете да работят по-ефективно и да предоставят информация на собствениците на сайта.</p>
+
+    <h2>2. Какви бисквитки използваме</h2>
+
+    <h3>Строго необходими бисквитки</h3>
+    <p>Тези бисквитки са задължителни за функционирането на сайта и не могат да бъдат изключени. Те не съхраняват лична информация.</p>
+
+    <table class="cookie-table" aria-label="Строго необходими бисквитки">
+        <thead>
+            <tr>
+                <th>Бисквитка</th>
+                <th>Цел</th>
+                <th>Срок</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>lazur_lang</code></td>
+                <td>Запазва предпочитания език (БГ/EN) за автоматичен redirect</td>
+                <td>localStorage (постоянна)</td>
+            </tr>
+            <tr>
+                <td><code>rokko_cookie_consent</code></td>
+                <td>Запазва вашия избор относно бисквитките</td>
+                <td>12 месеца</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Функционални бисквитки</h3>
+    <p>В момента сайтът не използва функционални бисквитки извън строго необходимите.</p>
+
+    <h3>Аналитични бисквитки</h3>
+    <p>В момента сайтът не използва аналитични инструменти (като Google Analytics). При бъдещо добавяне тази политика ще бъде актуализирана.</p>
+
+    <h3>Маркетингови бисквитки</h3>
+    <p>Сайтът не използва маркетингови или рекламни бисквитки.</p>
+
+    <h2>3. Как да управлявате бисквитките</h2>
+    <p>Имате следните възможности за управление на бисквитките:</p>
+    <ul>
+        <li><strong>Чрез нашия банер</strong> — при първо посещение можете да приемете или откажете незадължителните бисквитки</li>
+        <li><strong>Чрез настройките на браузъра</strong> — можете да блокирате или изтриете всички бисквитки от настройките на вашия браузър</li>
+        <li><strong>Изтриване на конкретна бисквитка</strong> — отворете Developer Tools → Application → Local Storage и изтрийте ключовете, свързани с нашия сайт</li>
+    </ul>
+    <p>Имайте предвид, че блокирането на всички бисквитки може да повлияе на функционалността на сайта (напр. езиковото превключване може да спре да работи).</p>
+
+    <h2>4. Бисквитки от трети страни</h2>
+    <p>Сайтът зарежда шрифтове от <strong>Google Fonts</strong>. Google може да постави бисквитки при зареждане на шрифтовете. За повече информация вижте <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Политиката за поверителност на Google</a>.</p>
+
+    <h2>5. Промени в политиката</h2>
+    <p>Можем да актуализираме тази политика при промяна в използваните от нас инструменти. Актуалната версия винаги е достъпна на тази страница.</p>
+
+    <h2>6. Контакт</h2>
+    <p>За въпроси относно бисквитките ни пишете на: <em>[ПОПЪЛНИ ИМЕЙЛ]</em></p>
+
+    <a href="index.html" class="legal-back">← Обратно към началото</a>
+</div>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+    <a href="index.html" class="logo" style="font-size:1.35rem;">RO<span>K</span>KO</a>
+    <p>© 2026 Rokko Day Trips</p>
+    <nav aria-label="Правни документи" style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+        <a href="privacy.html" style="color:rgba(255,255,255,0.5);font-size:0.72rem;text-decoration:none;letter-spacing:0.04em;">Поверителност</a>
+        <a href="cookies.html" style="color:rgba(255,255,255,0.5);font-size:0.72rem;text-decoration:none;letter-spacing:0.04em;">Бисквитки</a>
+        <a href="terms.html" style="color:rgba(255,255,255,0.5);font-size:0.72rem;text-decoration:none;letter-spacing:0.04em;">Общи условия</a>
+    </nav>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

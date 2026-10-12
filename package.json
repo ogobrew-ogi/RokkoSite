@@ -1,0 +1,12 @@
+{
+  "name": "roko-site-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Dev-only image pipeline for the ROKKO/LAZUR static site. The site itself has no build step.",
+  "scripts": {
+    "images": "node tools/build-images.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}

@@ -1,0 +1,680 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =====================================================
+         LANGUAGE REDIRECT
+         Изпълнява се ВЕДНАГА — преди render на каквото и да е.
+         Без async/defer, за да блокира рендерирането и да предотврати
+         мигане на грешна езикова версия (flash of wrong language).
+    ===================================================== -->
+    <script>
+    (function () {
+        if (location.protocol === 'file:') return;
+        var p = location.pathname.toLowerCase();
+        var kind =
+            (p.endsWith('/excursions-bg.html') || p.endsWith('excursions-bg.html')) ? 'excursions-bg' :
+            (p.endsWith('/excursions.html')     || p.endsWith('excursions.html'))    ? 'excursions'    :
+            (p.endsWith('/index-bg.html')       || p.endsWith('index-bg.html'))      ? 'index-bg'      :
+            (p.endsWith('/index.html')          || p.endsWith('index.html') || p === '/' || p.endsWith('/')) ? 'index' : null;
+        if (!kind) return;
+        var stored  = localStorage.getItem('lazur_lang') || '';
+        var docLang = document.documentElement.lang || '';
+        var lang    = (stored || docLang).toLowerCase().startsWith('en') ? 'en' : 'bg';
+        var want    =
+            (kind === 'index'      || kind === 'index-bg')     ? (lang === 'en' ? '/index.html'      : '/index-bg.html')      :
+            (kind === 'excursions' || kind === 'excursions-bg') ? (lang === 'en' ? '/excursions.html' : '/excursions-bg.html') : null;
+        if (!want) return;
+        var cur = location.pathname === '/' ? '/index.html' : location.pathname;
+        if (cur !== want) location.replace(want + location.hash);
+    }());
+    </script>
+
+    <title>ROKKO — Day Trips | From 42 BGN</title>
+    <meta name="description"
+          content="Day trips with transport and guide — Azure Bay, Forest Haven, Sunny Hill, White Seagull Island, Marble Caves. Book online from 42 BGN per person.">
+
+    <!-- TODO: replace with real domain after deployment -->
+    <link rel="canonical" href="https://lazur-trips.com/">
+    <link rel="alternate" hreflang="bg" href="https://lazur-trips.com/index-bg.html">
+    <link rel="alternate" hreflang="en" href="https://lazur-trips.com/">
+    <link rel="alternate" hreflang="x-default" href="https://lazur-trips.com/">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230d1b2a'/><text y='.9em' font-size='70' x='50%' dominant-baseline='middle' text-anchor='middle' fill='%23c8a96e' font-family='serif' font-style='italic'>R</text></svg>">
+    <meta name="theme-color" content="#0d1b2a">
+
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://lazur-trips.com/">
+    <meta property="og:title"       content="ROKKO — Day Trips | From 42 BGN">
+    <meta property="og:description" content="Azure bays, waterfalls, medieval fortresses, untouched islands and marble caves. Day trips with transport and a guide from 42 BGN.">
+    <meta property="og:image"       content="images/1.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Azure sea and white sand — ROKKO Day Trips">
+    <meta property="og:locale"      content="en_US">
+    <meta property="og:site_name"   content="ROKKO Day Trips">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="ROKKO — Day Trips | From 42 BGN">
+    <meta name="twitter:description" content="Day trips with transport and a guide. Book from 42 BGN per person.">
+    <meta name="twitter:image"       content="images/1.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "@id": "https://lazur-trips.com/#agency",
+        "name": "ROKKO Day Trips",
+        "url": "https://lazur-trips.com",
+        "description": "Day trips with transport and a guide to beautiful destinations.",
+        "priceRange": "42–89 BGN",
+        "inLanguage": "en",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "09:00",
+            "closes": "19:00"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Day trips",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Azure Bay",
+                        "description": "A one-day trip to a scenic bay with crystal-clear water, a small harbor town and snorkeling.",
+                        "touristType": ["Families", "Couples", "Nature lovers"]
+                    },
+                    "price": "65",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Forest Haven",
+                        "description": "A trip to a nature reserve with ancient forests, waterfalls up to 18m and rich biodiversity.",
+                        "touristType": ["Families", "Photographers", "Nature lovers"]
+                    },
+                    "price": "55",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Sunny Hill",
+                        "description": "Visit a medieval fortress and a 360° viewpoint. History, museum and panoramic views.",
+                        "touristType": ["History", "Families", "All ages"]
+                    },
+                    "price": "48",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "White Seagull Island",
+                        "description": "A sea trip to a protected uninhabited island with unique bird colonies and pristine underwater life.",
+                        "touristType": ["Nature lovers", "Snorkeling", "Limited spots"]
+                    },
+                    "price": "89",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/LimitedAvailability"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Marble Caves",
+                        "description": "Underground walk through cave tunnels and crystal halls. Family-friendly, year-round.",
+                        "touristType": ["Families", "Kids 4+", "Year-round"]
+                    },
+                    "price": "42",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/InStock"
+                }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <noscript>
+        <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+    </noscript>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav id="navbar">
+    <a href="#home" class="logo">RO<span>K</span>KO</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#exc-1">Azure Bay</a></li>
+        <li><a href="#exc-2">Forest Haven</a></li>
+        <li><a href="#exc-3">Sunny Hill</a></li>
+        <li><a href="#exc-4">White Seagull</a></li>
+        <li><a href="#exc-5">Marble Caves</a></li>
+        <li><a href="excursions.html">More trips</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="lang-item">
+            <a class="lang-link" href="index-bg.html" data-lang="bg" aria-label="Превключи на български">BG</a>
+        </li>
+    </ul>
+    <button class="nav-toggle" id="navToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="navLinks">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section id="home" aria-label="Home">
+    <picture>
+        <source srcset="images/1.avif" type="image/avif">
+        <source srcset="images/1.webp" type="image/webp">
+        <img class="hero-bg-img"
+         src="images/1.jpg"
+         alt=""
+         aria-hidden="true"
+         width="1600" height="900"
+         loading="eager"
+         fetchpriority="high">
+    </picture>
+    <div class="hero-content">
+        <p class="hero-eyebrow">
+            Day trips &nbsp;<span style="color:var(--sand);opacity:0.8;">·</span>&nbsp; Curated experiences
+        </p>
+        <h1 class="hero-title">Discover<br><em>new horizons</em><br>near you</h1>
+        <p class="hero-subtitle">Carefully curated one-day trips to the most beautiful places—just a short ride away.</p>
+        <div class="hero-facts" aria-label="Key information">
+            <span class="fact-pill">From 42 BGN / person</span>
+            <span class="fact-dot" aria-hidden="true">·</span>
+            <span class="fact-pill">Season: year-round / May–Oct</span>
+            <span class="fact-dot" aria-hidden="true">·</span>
+            <span class="fact-pill">Reply within 24 hours</span>
+        </div>
+        <a href="#exc-1" class="hero-cta">Explore trips</a>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+        <div class="line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ==================== REVIEWS (TEMPLATE) ==================== -->
+<section class="reviews" aria-label="Reviews">
+    <div class="reviews-inner">
+        <span class="section-tag">Trust</span>
+        <h2 class="reviews-title">People choose us for the <em>details</em></h2>
+        <p class="reviews-sub">These are sample reviews (placeholders). Replace them with real reviews or a source (Google/Facebook).</p>
+
+        <div class="rating-row" aria-label="Rating (sample)">
+            <span class="rating-badge">★ 4.9 / 5</span>
+            <span class="rating-note">based on (PLACEHOLDER) 128 reviews</span>
+        </div>
+
+        <div class="review-grid">
+            <figure class="review-card reveal d1">
+                <blockquote>“Perfect organization and an amazing guide. Would do it again!”</blockquote>
+                <figcaption>— (PLACEHOLDER) Name, city/date</figcaption>
+            </figure>
+            <figure class="review-card reveal d2">
+                <blockquote>“Clean transport, on time, and beautiful spots. Highly recommended.”</blockquote>
+                <figcaption>— (PLACEHOLDER) Name, city/date</figcaption>
+            </figure>
+            <figure class="review-card reveal d3">
+                <blockquote>“Great for families—balanced pace and plenty of time to enjoy.”</blockquote>
+                <figcaption>— (PLACEHOLDER) Name, city/date</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== TRIP 01 ==================== -->
+<section class="exc-section" id="exc-1" aria-label="Trip 01 — Azure Bay">
+    <div class="exc-banner" data-bg="images/2">
+        <div class="banner-label">
+            <span class="exc-num">Trip 01</span>
+            <h2>Azure Bay</h2>
+            <p class="banner-meta">From <strong>65 BGN</strong> · May–Oct · 10–12 hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/3.avif" type="image/avif">
+                    <source srcset="images/3.webp" type="image/webp">
+                    <img src="images/3.jpg"
+                     alt="Azure Bay — cliff view over the sea"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Morning light over the bay</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/4.avif" type="image/avif">
+                    <source srcset="images/4.webp" type="image/webp">
+                    <img src="images/4.jpg"
+                     alt="Crystal-clear turquoise waters"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Crystal-clear turquoise waters</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>A postcard-perfect bay on the coast</h3>
+                <p>Hidden between rocky hills and Mediterranean greenery, Azure Bay is the kind of place you dream about long before you see it. The water shifts from turquoise to deep blue, and the white seabed gives the beach a tropical feel.</p>
+                <p>The trip includes a quiet harbor town and a local market. Enjoy fresh seafood with a view, then take a relaxed walk along the coast.</p>
+                <p>Bring comfortable shoes and sun protection. Swimming and snorkeling are best from late May to September.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about Azure Bay">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">10–12 hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">Air-conditioned bus</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">Lunch, guide, insurance</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">May–October</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">65 BGN / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<!-- ==================== TRIP 02 ==================== -->
+<section class="exc-section" id="exc-2" aria-label="Trip 02 — Forest Haven">
+    <div class="exc-banner" data-bg="images/5">
+        <div class="banner-label">
+            <span class="exc-num">Trip 02</span>
+            <h2>Forest Haven</h2>
+            <p class="banner-meta">From <strong>55 BGN</strong> · Mar–Nov · 8–9 hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/6.avif" type="image/avif">
+                    <source srcset="images/6.webp" type="image/webp">
+                    <img src="images/6.jpg"
+                     alt="Waterfalls up to 18 meters in Forest Haven reserve"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Forest Haven waterfalls (18m)</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/7.avif" type="image/avif">
+                    <source srcset="images/7.webp" type="image/webp">
+                    <img src="images/7.jpg"
+                     alt="Ancient beech forest with mossy stones"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Ancient beech forest</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Ancient woods and rushing waterfalls</h3>
+                <p>Forest Haven is a nature reserve with ancient beech and oak forests, mountain streams and a chain of waterfalls reaching 18 meters.</p>
+                <p>The route is designed for strong views with moderate effort. Ideal for nature lovers and photographers.</p>
+                <p>Wear waterproof shoes and a light rain jacket. Recommended for children 6+.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about Forest Haven">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">8–9 hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Difficulty</span><span class="meta-val">Easy to moderate</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">Breakfast, nature guide</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">March–November</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">55 BGN / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<!-- ==================== TRIP 03 ==================== -->
+<section class="exc-section" id="exc-3" aria-label="Trip 03 — Sunny Hill">
+    <div class="exc-banner" data-bg="images/8">
+        <div class="banner-label">
+            <span class="exc-num">Trip 03</span>
+            <h2>Sunny Hill</h2>
+            <p class="banner-meta">From <strong>48 BGN</strong> · Year-round · 7–8 hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/9.avif" type="image/avif">
+                    <source srcset="images/9.webp" type="image/webp">
+                    <img src="images/9.jpg"
+                     alt="Medieval fortress wall at Sunny Hill"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Medieval fortress wall</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/10.avif" type="image/avif">
+                    <source srcset="images/10.webp" type="image/webp">
+                    <img src="images/10.jpg"
+                     alt="360-degree panorama from the observation tower"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>360° panorama from the tower</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Layers of history on one hill</h3>
+                <p>Sunny Hill blends ancient sites, medieval walls and a viewpoint tower with stunning panoramas.</p>
+                <p>Your guide will take you up to the observation tower and through a small museum with artifacts.</p>
+                <p>Suitable for all ages.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about Sunny Hill">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">7–8 hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">Tickets, historian guide</span></div>
+                <div class="meta-row"><span class="meta-lbl">Best for</span><span class="meta-val">All ages</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">Year-round</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">48 BGN / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<!-- ==================== TRIP 04 ==================== -->
+<section class="exc-section" id="exc-4" aria-label="Trip 04 — White Seagull Island">
+    <div class="exc-banner" data-bg="images/11">
+        <div class="banner-label">
+            <span class="exc-num">Trip 04</span>
+            <h2>White Seagull Island</h2>
+            <p class="banner-meta">From <strong>89 BGN</strong> · Jun–Sep · 11 hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/12.avif" type="image/avif">
+                    <source srcset="images/12.webp" type="image/webp">
+                    <img src="images/12.jpg"
+                     alt="Arrival at an uninhabited island by a small boat"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Boat arrival</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/13.avif" type="image/avif">
+                    <source srcset="images/13.webp" type="image/webp">
+                    <img src="images/13.jpg"
+                     alt="Protected seagull colony in a nature reserve"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Protected bird colony</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Untouched beauty on a small protected island</h3>
+                <p>A 40-minute boat ride takes you to a protected island with unique bird colonies and clear water.</p>
+                <p>Visits are limited—early booking recommended.</p>
+                <p>Bring enough water and sun protection.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about White Seagull Island">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">Full day (11h)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">Bus + boat</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">Lunch on board, biologist</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">June–September</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">89 BGN / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<!-- ==================== TRIP 05 ==================== -->
+<section class="exc-section" id="exc-5" aria-label="Trip 05 — Marble Caves">
+    <div class="exc-banner" data-bg="images/14">
+        <div class="banner-label">
+            <span class="exc-num">Trip 05</span>
+            <h2>Marble Caves</h2>
+            <p class="banner-meta">From <strong>42 BGN</strong> · Year-round · 6–7 hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/15.avif" type="image/avif">
+                    <source srcset="images/15.webp" type="image/webp">
+                    <img src="images/15.jpg"
+                     alt="Entrance of the Marble Caves"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Marble Caves entrance</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/16.avif" type="image/avif">
+                    <source srcset="images/16.webp" type="image/webp">
+                    <img src="images/16.jpg"
+                     alt="Ancient stalactites in a crystal cave hall"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Crystal hall</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Underground: marble and crystal worlds</h3>
+                <p>The Marble Caves are a natural wonder with halls, corridors and underground lakes. About 900 meters are open to visitors.</p>
+                <p>Inside temperature is around 12°C—bring a light jacket even in summer.</p>
+                <p>Suitable for children 4+.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about Marble Caves">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">6–7 hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">Tickets, helmet, guide</span></div>
+                <div class="meta-row"><span class="meta-lbl">Best for</span><span class="meta-val">Families, kids 4+</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">Year-round</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">42 BGN / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==================== MORE TRIPS ==================== -->
+<section aria-label="More trips" style="background:var(--navy);padding:6rem 5rem;text-align:center;position:relative;overflow:hidden;">
+    <div style="max-width:720px;margin:0 auto;position:relative;z-index:2;">
+        <span class="section-tag">More destinations</span>
+        <h2 class="contact-title">Discover <em>more</em><br>adventures</h2>
+        <div class="title-rule"></div>
+        <p class="contact-intro">We have more exciting routes waiting for you — from hidden beaches to mountain peaks. Browse the full list and pick your next adventure.</p>
+        <a href="excursions.html" class="hero-cta" style="opacity:1;animation:none;">View all trips</a>
+    </div>
+</section>
+
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact" aria-label="Contact form">
+    <div class="contact-inner">
+        <div class="contact-head">
+            <span class="section-tag">Get in touch</span>
+            <h2 class="contact-title">Ready for your <em>next</em><br>adventure?</h2>
+            <div class="title-rule"></div>
+        </div>
+        <p class="contact-intro">
+            Fill out the form and our team will reply within 24 hours with available dates, details and a tailored offer.
+        </p>
+
+        <!-- Direct contacts — desktop only -->
+        <div class="contact-alt" aria-label="Direct contacts">
+            <a href="tel:+359000000000" class="contact-alt-item" aria-label="Call us">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>[PLACEHOLDER — +359 88 ...]</span>
+            </a>
+            <span class="contact-alt-sep" aria-hidden="true"></span>
+            <a href="mailto:contact@rokko.bg" class="contact-alt-item" aria-label="Send email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>[PLACEHOLDER — contact@rokko.bg]</span>
+            </a>
+            <span class="contact-alt-sep" aria-hidden="true"></span>
+            <a href="https://wa.me/359000000000" class="contact-alt-item contact-alt-item--wa" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                <span>WhatsApp</span>
+            </a>
+        </div>
+
+        <form id="contactForm"
+              action="/api/contact"
+              method="POST"
+              novalidate
+              class="cform">
+
+            <input type="hidden" name="_subject" value="New enquiry from ROKKO website">
+            <input type="text"   name="_gotcha"  style="display:none" aria-hidden="true" tabindex="-1">
+
+            <div class="fg">
+                <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-name" name="name" type="text"
+                       placeholder="John Doe"
+                       required autocomplete="name"
+                       aria-describedby="name-err">
+                <span class="field-err" id="name-err" role="alert">Please enter your name.</span>
+            </div>
+            <div class="fg">
+                <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-email" name="email" type="email"
+                       placeholder="john@example.com"
+                       required autocomplete="email"
+                       pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                       aria-describedby="email-err">
+                <span class="field-err" id="email-err" role="alert">Please enter a valid email.</span>
+            </div>
+            <div class="fg">
+                <label for="f-phone">Phone</label>
+                <input id="f-phone" name="phone" type="tel"
+                       placeholder="+359 88 ..." autocomplete="tel">
+            </div>
+            <div class="fg">
+                <label for="f-exc">Preferred trip</label>
+                <select id="f-exc" name="excursion">
+                    <option value="">— Choose —</option>
+                    <option>Azure Bay</option>
+                    <option>Forest Haven</option>
+                    <option>Sunny Hill</option>
+                    <option>White Seagull Island</option>
+                    <option>Marble Caves</option>
+                    <option>Not sure / Ask for options</option>
+                </select>
+            </div>
+            <div class="fg">
+                <label for="f-people">People</label>
+                <input id="f-people" name="people" type="number" min="1" max="50" placeholder="2">
+            </div>
+            <div class="fg">
+                <label for="f-date">Preferred date</label>
+                <input id="f-date" name="date" type="date">
+            </div>
+            <div class="fg wide">
+                <label for="f-msg">Message</label>
+                <textarea id="f-msg" name="message"
+                          placeholder="Questions, special requests, or details..."></textarea>
+            </div>
+            <div class="submit-wrap">
+                <button class="btn-send" type="submit" id="sendBtn">Send enquiry</button>
+            </div>
+
+            <div id="form-success" class="form-msg form-msg--ok" role="status" aria-live="polite">
+                ✓ &nbsp;Message sent successfully! We’ll get back to you soon.
+            </div>
+            <div id="form-error" class="form-msg form-msg--err" role="alert" aria-live="assertive">
+                ✕ &nbsp;Something went wrong. Please try again or email us directly.
+            </div>
+        </form>
+    </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+    <a href="#home" class="logo" style="font-size:1.35rem;">RO<span>K</span>KO</a>
+    <p>© 2026 Rokko Day Trips</p>
+    <p>
+        <a href="privacy-policy.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;text-underline-offset:3px;">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;text-underline-offset:3px;">Terms</a>
+    </p>
+</footer>
+
+<!-- Sticky CTA (mobile) -->
+<div class="mobile-cta" role="region" aria-label="Quick actions">
+    <a class="mcta-btn mcta-btn--primary" href="#contact">Enquiry</a>
+    <a class="mcta-btn mcta-btn--outline" href="tel:+359000000000">[PLACEHOLDER] Call</a>
+    <a class="mcta-btn mcta-btn--wa" href="https://wa.me/359000000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<!-- Back to top -->
+<button id="top-btn" title="Back to menu" aria-label="Back to menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+         aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"/>
+    </svg>
+    <span class="btn-text">Menu</span>
+</button>
+
+<!-- ==================== COOKIE BANNER ==================== -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice" hidden>
+    <p class="cookie-text">
+        We use only technically necessary cookies to save your language preference. No tracking, no ads.
+        <a href="privacy-policy.html" class="cookie-link">Learn more</a>
+    </p>
+    <div class="cookie-actions">
+        <button id="cookie-accept" class="cookie-btn cookie-btn--primary">Got it</button>
+        <button id="cookie-decline" class="cookie-btn cookie-btn--outline">Decline</button>
+    </div>
+</div>
+
+<script src="main.js" defer></script>
+</body>
+</html>
+

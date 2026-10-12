@@ -1,0 +1,41 @@
+# ============================================================
+#  Cloudflare Pages — HTTP Security Headers
+#  Файлът трябва да е в основната (root) директория на проекта
+# ============================================================
+
+/*
+  # Предотвратява зареждане на сайта в iframe от друг домейн (clickjacking)
+  X-Frame-Options: SAMEORIGIN
+
+  # Браузърът не трябва да познае content-type (MIME sniffing)
+  X-Content-Type-Options: nosniff
+
+  # Изпраща само origin при cross-origin заявки (privacy)
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Забранява достъп до камера, микрофон, GPS (не са нужни за сайта)
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+  # Принуждава HTTPS за 1 година, включва поддомейни
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Content Security Policy — разрешава само доверени източници
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://images.unsplash.com data:; connect-src 'self'; frame-ancestors 'none';
+
+  # Забранява Adobe Flash и PDF embed в IE/Edge legacy
+  X-Permitted-Cross-Domain-Policies: none
+
+# Статичните assets се кешират агресивно (1 година)
+# Ако сменяш CSS/JS, добави ?v=2 към URL-а в HTML-а
+/style.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/main.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML никога не се кешира (за да виждат потребителите промените веднага)
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/404.html
+  Cache-Control: no-cache, no-store, must-revalidate

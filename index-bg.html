@@ -1,0 +1,739 @@
+﻿<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =====================================================
+         LANGUAGE REDIRECT
+         Изпълнява се ВЕДНАГА — преди render на каквото и да е.
+         Без async/defer, за да блокира рендерирането и да предотврати
+         мигане на грешна езикова версия (flash of wrong language).
+    ===================================================== -->
+    <script>
+    (function () {
+        if (location.protocol === 'file:') return;
+        var p = location.pathname.toLowerCase();
+        var kind =
+            (p.endsWith('/excursions-bg.html') || p.endsWith('excursions-bg.html')) ? 'excursions-bg' :
+            (p.endsWith('/excursions.html')     || p.endsWith('excursions.html'))    ? 'excursions'    :
+            (p.endsWith('/index-bg.html')       || p.endsWith('index-bg.html'))      ? 'index-bg'      :
+            (p.endsWith('/index.html')          || p.endsWith('index.html') || p === '/' || p.endsWith('/')) ? 'index' : null;
+        if (!kind) return;
+        var stored  = localStorage.getItem('lazur_lang') || '';
+        var docLang = document.documentElement.lang || '';
+        var lang    = (stored || docLang).toLowerCase().startsWith('en') ? 'en' : 'bg';
+        var want    =
+            (kind === 'index'      || kind === 'index-bg')     ? (lang === 'en' ? '/index.html'      : '/index-bg.html')      :
+            (kind === 'excursions' || kind === 'excursions-bg') ? (lang === 'en' ? '/excursions.html' : '/excursions-bg.html') : null;
+        if (!want) return;
+        var cur = location.pathname === '/' ? '/index.html' : location.pathname;
+        if (cur !== want) location.replace(want + location.hash);
+    }());
+    </script>
+
+    <!-- =====================================================
+         SEO — ОСНОВНИ ТАГОВЕ
+         ВАЖНО: замени https://lazur-trips.com с реалния URL
+                когато качиш сайта
+    ===================================================== -->
+
+    <title>ROKKO — Дневни Екскурзии | От 42 лв.</title>
+
+    <!-- FIX: по-силно meta description с ключови думи и цена -->
+    <meta name="description"
+          content="Дневни екскурзии с транспорт и водач — Лазурен залив, Горски рай, Слънчев хълм, остров Бяла чайка, Мраморни пещери. Резервирай онлайн от 42 лв. на човек.">
+
+    <!-- FIX: canonical — казва на Google кой е официалният URL -->
+    <link rel="canonical" href="https://lazur-trips.com/index-bg.html">
+
+    <link rel="alternate" hreflang="bg"      href="https://lazur-trips.com/index-bg.html">
+    <link rel="alternate" hreflang="en"      href="https://lazur-trips.com/">
+    <link rel="alternate" hreflang="x-default" href="https://lazur-trips.com/">
+
+    <!-- =====================================================
+         FAVICON — SVG (универсален, без .ico файл)
+         FIX: липсваше напълно → 404 при всяко зареждане
+    ===================================================== -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230d1b2a'/><text y='.9em' font-size='70' x='50%' dominant-baseline='middle' text-anchor='middle' fill='%23c8a96e' font-family='serif' font-style='italic'>R</text></svg>">
+    <meta name="theme-color" content="#0d1b2a">
+    <!-- Apple touch icon — iOS "Добави към начален екран" -->
+    <!-- ВАЖНО: замени href с реален PNG 180×180px когато имаш лого -->
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' fill='%230d1b2a'/><text y='.9em' font-size='126' x='90' dominant-baseline='middle' text-anchor='middle' fill='%23c8a96e' font-family='serif' font-style='italic'>R</text></svg>">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ROKKO">
+
+    <!-- =====================================================
+         OPEN GRAPH (Facebook, Viber, LinkedIn)
+         FIX: добавени og:url + по-силни описания
+         ВАЖНО: замени og:image с реална снимка 1200×630px
+    ===================================================== -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://lazur-trips.com/index-bg.html">
+    <meta property="og:title"       content="ROKKO — Дневни Екскурзии | От 42 лв.">
+    <meta property="og:description" content="Лазурен залив, горски водопади, средновековни крепости, необитаеми острови и мраморни пещери. Дневни екскурзии с транспорт и водач от 42 лв.">
+    <meta property="og:image"       content="images/1.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Лазурно море и бял пясък — ROKKO Дневни Екскурзии">
+    <meta property="og:locale"      content="bg_BG">
+    <meta property="og:site_name"   content="ROKKO Дневни Екскурзии">
+
+    <!-- =====================================================
+         TWITTER / X CARDS
+         FIX: липсваха напълно
+    ===================================================== -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="ROKKO — Дневни Екскурзии | От 42 лв.">
+    <meta name="twitter:description" content="Лазурен залив, горски водопади, средновековни крепости и мраморни пещери. Резервирай от 42 лв.">
+    <meta name="twitter:image"       content="images/1.jpg">
+
+    <!-- =====================================================
+         SCHEMA.ORG — СТРУКТУРИРАНИ ДАННИ
+         FIX: липсваха напълно — добавени за всяка екскурзия
+         Позволява на Google да показва Rich Results
+    ===================================================== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "@id": "https://lazur-trips.com/#agency",
+        "name": "ROKKO Дневни Екскурзии",
+        "url": "https://lazur-trips.com",
+        "description": "Дневни екскурзии с транспорт и водач до най-красивите дестинации.",
+        "priceRange": "42–89 лв.",
+        "inLanguage": "bg",
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+            "opens": "09:00",
+            "closes": "19:00"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Дневни екскурзии",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Лазурен залив",
+                        "description": "Еднодневна екскурзия до живописен морски залив с кристално чиста вода, рибарско градче и снорклинг.",
+                        "touristType": ["Семейства", "Двойки", "Любители на природата"]
+                    },
+                    "price": "65",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/InStock",
+                    "validFrom": "2026-05-01",
+                    "validThrough": "2026-10-31"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Горски рай",
+                        "description": "Екскурзия до природен резерват с вековни гори, водопади до 18 метра и богато биоразнообразие.",
+                        "touristType": ["Семейства", "Фотографи", "Любители на природата"]
+                    },
+                    "price": "55",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/InStock",
+                    "validFrom": "2026-03-01",
+                    "validThrough": "2026-11-30"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Слънчев хълм",
+                        "description": "Посещение на средновековна крепост с 347 стъпала и 360-градусова панорама. Антична история и музей на открито.",
+                        "touristType": ["История", "Семейства", "Всички възрасти"]
+                    },
+                    "price": "48",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Островът на Бялата чайка",
+                        "description": "Морска екскурзия до необитаем остров — природен резерват с уникална птича колония и нетронат подводен свят.",
+                        "touristType": ["Природолюбители", "Снорклинг", "Ограничени места"]
+                    },
+                    "price": "89",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/LimitedAvailability",
+                    "validFrom": "2026-06-01",
+                    "validThrough": "2026-09-30"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Мраморните пещери",
+                        "description": "Подземна обиколка на 900 м. пещерни тунели — сталактити, кристални галерии и езера на отражението.",
+                        "touristType": ["Семейства", "Деца 4+", "Целогодишно"]
+                    },
+                    "price": "42",
+                    "priceCurrency": "BGN",
+                    "availability": "https://schema.org/InStock"
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- =====================================================
+         PRECONNECT — по-бързо зареждане
+    ===================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Шрифтове -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+    <!-- Стилове -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- noscript: reveal елементите стават видими ако JS е изключен -->
+    <noscript>
+        <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+    </noscript>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Към съдържанието</a>
+
+<!-- ==================== НАВИГАЦИЯ ==================== -->
+<nav id="navbar">
+    <a href="#home" class="logo">RO<span>K</span>KO</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#exc-1">Лазурен залив</a></li>
+        <li><a href="#exc-2">Горски рай</a></li>
+        <li><a href="#exc-3">Слънчев хълм</a></li>
+        <li><a href="#exc-4">Бялата чайка</a></li>
+        <li><a href="#exc-5">Мраморни пещери</a></li>
+        <li><a href="excursions-bg.html">Още екскурзии</a></li>
+        <li><a href="#contact">Контакти</a></li>
+        <li class="lang-item">
+            <a class="lang-link" href="index.html" data-lang="en" aria-label="Switch to English">EN</a>
+        </li>
+    </ul>
+    <button class="nav-toggle" id="navToggle"
+            aria-label="Отвори менюто"
+            aria-expanded="false"
+            aria-controls="navLinks">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section id="home" aria-label="Начало">
+    <!--
+        FIX: width/height добавени на всички снимки.
+        Hero снимката е position:absolute, затова width/height
+        са декоративни — браузърът няма layout shift тук,
+        но ги добавяме за консистентност.
+    -->
+    <picture>
+        <source srcset="images/1.avif" type="image/avif">
+        <source srcset="images/1.webp" type="image/webp">
+        <img class="hero-bg-img"
+         src="images/1.jpg"
+         alt=""
+         aria-hidden="true"
+         width="1600" height="900"
+         loading="eager"
+         fetchpriority="high">
+    </picture>
+    <div class="hero-content">
+        <p class="hero-eyebrow">
+            Дневни екскурзии &nbsp;<span style="color:var(--sand);opacity:0.8;">·</span>&nbsp; Незабравими преживявания
+        </p>
+        <h1 class="hero-title">Открий<br><em>хоризонтите</em><br>около теб</h1>
+        <p class="hero-subtitle">Внимателно подбрани еднодневни екскурзии до най-красивите кътчета, скрити само на час разстояние от теб.</p>
+        <div class="hero-facts" aria-label="Основна информация">
+            <span class="fact-pill">От 42 лв. / човек</span>
+            <span class="fact-dot" aria-hidden="true">·</span>
+            <span class="fact-pill">Сезон: целогодишно / Май–Окт</span>
+            <span class="fact-dot" aria-hidden="true">·</span>
+            <span class="fact-pill">Отговор до 24 часа</span>
+        </div>
+        <a href="#exc-1" class="hero-cta">Разгледай екскурзиите</a>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+        <div class="line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ==================== ОТЗИВИ (ШАБЛОН) ==================== -->
+<section class="reviews" aria-label="Отзиви">
+    <div class="reviews-inner">
+        <span class="section-tag">Доверие</span>
+        <h2 class="reviews-title">Хората ни избират заради <em>детайлите</em></h2>
+        <p class="reviews-sub">Тук са примерни отзиви (placeholders). Замени ги с реални мнения или източник (Google/FB).</p>
+
+        <div class="rating-row" aria-label="Рейтинг (пример)">
+            <span class="rating-badge">★ 4.9 / 5</span>
+            <span class="rating-note">на база (PLACEHOLDER) 128 отзива</span>
+        </div>
+
+        <div class="review-grid">
+            <figure class="review-card reveal d1">
+                <blockquote>„Организацията беше перфектна, а водачът разказваше супер интересно. Бих повторил!“</blockquote>
+                <figcaption>— (PLACEHOLDER) Име, гр./дата</figcaption>
+            </figure>
+            <figure class="review-card reveal d2">
+                <blockquote>„Чист транспорт, точни часове и много красиви места. Силно препоръчвам.“</blockquote>
+                <figcaption>— (PLACEHOLDER) Име, гр./дата</figcaption>
+            </figure>
+            <figure class="review-card reveal d3">
+                <blockquote>„Страхотно за семейства — има време и за разходка, и за почивка. Благодарим!“</blockquote>
+                <figcaption>— (PLACEHOLDER) Име, гр./дата</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==================== ЕКСКУРЗИЯ 01 ==================== -->
+<section class="exc-section" id="exc-1" aria-label="Екскурзия 01 — Лазурен залив">
+    <div class="exc-banner" data-bg="images/2">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 01</span>
+            <h2>Лазурен залив</h2>
+            <p class="banner-meta">От <strong>65 лв.</strong> · Май–Октомври · 10–12 часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <!-- FIX: width + height на всички снимки за нулев CLS -->
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/3.avif" type="image/avif">
+                    <source srcset="images/3.webp" type="image/webp">
+                    <img src="images/3.jpg"
+                     alt="Лазурен залив — изглед от скалите към морето"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Сутрешна светлина над залива</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/4.avif" type="image/avif">
+                    <source srcset="images/4.webp" type="image/webp">
+                    <img src="images/4.jpg"
+                     alt="Кристално чисти тюркоазени морски води"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Кристално чисти тюркоазени води</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Приказният залив на лазурното крайбрежие</h3>
+                <p>Скрит между скалистите хълмове и нежната зеленина на средиземноморската растителност, Лазурният залив е едно от онези места, за които мечтаеш дълго преди да ги видиш. Водата сменя цвета си от тюркоазено към дълбоко синьо в зависимост от времето на деня, а бялото пясъчно дъно придава на плажа почти тропически вид.</p>
+                <p>Нашата екскурзия включва тихо пристанищно градче с рибарски лодки и местен пазар, работещ от зори. Ще имате възможност да опитате прясна риба и морски дарове в семеен ресторант с гледка към водата, преди следобедната разходка по крайбрежната алея с вековни маслини.</p>
+                <p>Препоръчваме удобни обувки и слънцезащита. Водата е подходяща за плуване и гмуркане от края на май до септември — видимостта под вода достига до 12 метра в спокойни дни, което прави снорклингът истинско откритие дори за опитни плувци.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Лазурен залив">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">10 – 12 часа</span></div>
+                <div class="meta-row"><span class="meta-lbl">Транспорт</span><span class="meta-val">Климатизиран автобус</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">Обяд, водач, застраховка</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Май – Октомври</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">65 лв. / човек</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+
+<!-- ==================== ЕКСКУРЗИЯ 02 ==================== -->
+<section class="exc-section" id="exc-2" aria-label="Екскурзия 02 — Горски рай">
+    <div class="exc-banner" data-bg="images/5">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 02</span>
+            <h2>Горският рай</h2>
+            <p class="banner-meta">От <strong>55 лв.</strong> · Март–Ноември · 8–9 часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/6.avif" type="image/avif">
+                    <source srcset="images/6.webp" type="image/webp">
+                    <img src="images/6.jpg"
+                     alt="Водопади до 18 метра в природен резерват Горски рай"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Водопадите на Горски рай (18 м.)</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/7.avif" type="image/avif">
+                    <source srcset="images/7.webp" type="image/webp">
+                    <img src="images/7.jpg"
+                     alt="Вековна букова гора с мъхови камъни"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Вековна букова гора</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Сред вековни гори и шумящи водопади</h3>
+                <p>Горският рай е природен резерват с невероятното разнообразие на умерения климат — вековни букови и дъбови гори, мъхови скали, планински потоци и серия от живописни водопади, достигащи до 18 метра височина. Местността е дом на над 200 вида птици и редки растения, включени в европейски природозащитни програми.</p>
+                <p>Маршрутът е внимателно проектиран да предложи максимален визуален ефект с умерено физическо усилие. Преминаваме покрай три главни водопада, правим почивка при панорамна площадка с гледка към долината и завършваме в малко горско заслонище, където ви очаква традиционна планинска закуска с местен мед и сирене.</p>
+                <p>Идеалната екскурзия за любители на природата и фотографи. Носете водоустойчиви обувки и лека непромокаема якичка — близостта до водопадите носи постоянна приятна влага. Препоръчва се за деца над 6 години.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Горски рай">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">8 – 9 часа</span></div>
+                <div class="meta-row"><span class="meta-lbl">Трудност</span><span class="meta-val">Лека до умерена</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">Закуска, водач-натуралист</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Март – Ноември</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">55 лв. / човек</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+
+<!-- ==================== ЕКСКУРЗИЯ 03 ==================== -->
+<section class="exc-section" id="exc-3" aria-label="Екскурзия 03 — Слънчев хълм">
+    <div class="exc-banner" data-bg="images/8">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 03</span>
+            <h2>Слънчев хълм</h2>
+            <p class="banner-meta">От <strong>48 лв.</strong> · Целогодишно · 7–8 часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/9.avif" type="image/avif">
+                    <source srcset="images/9.webp" type="image/webp">
+                    <img src="images/9.jpg"
+                     alt="Средновековна крепостна стена на Слънчев хълм"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Средновековната крепостна стена</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/10.avif" type="image/avif">
+                    <source srcset="images/10.webp" type="image/webp">
+                    <img src="images/10.jpg"
+                     alt="360-градусова панорама от наблюдателната кула"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>360° панорама от наблюдателната кула</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Хиляди години история на един хълм</h3>
+                <p>Слънчев хълм е едно от онези места, където историята буквално е изписана по камъните. Античното тракийско светилище, средновековната крепостна стена и ренесансовата кула са само три от пластовете, наслагени в продължение на хилядолетия. Разкопките продължават и до днес — понякога можете да видите как работят археолозите на живо.</p>
+                <p>Нашият историк-водач ще ви преведе от основите на крепостта до върха на наблюдателната кула, откъдето се открива зашеметяваща 360-градусова панорама. В ясни дни се вижда морето на изток и снежните планински върхове на запад — рядко зрелище за тези, изкачили всичките 347 стъпала.</p>
+                <p>Посещението включва малък обект-музей с оригинални находки: монети, керамика и оръжия от различни епохи. Фотографирането е разрешено навсякъде. Подходящо за всички възрасти — пътеката е добре поддържана и частично асфалтирана.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Слънчев хълм">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">7 – 8 часа</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">Билети, историк-водач</span></div>
+                <div class="meta-row"><span class="meta-lbl">Подходящо за</span><span class="meta-val">Всички възрасти</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Целогодишно</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">48 лв. / човек</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+
+<!-- ==================== ЕКСКУРЗИЯ 04 ==================== -->
+<section class="exc-section" id="exc-4" aria-label="Екскурзия 04 — Островът на Бялата чайка">
+    <div class="exc-banner" data-bg="images/11">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 04</span>
+            <h2>Островът на Бялата чайка</h2>
+            <p class="banner-meta">От <strong>89 лв.</strong> · Юни–Септември · 11 часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/12.avif" type="image/avif">
+                    <source srcset="images/12.webp" type="image/webp">
+                    <img src="images/12.jpg"
+                     alt="Пристигане на необитаем остров с малък кораб"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Пристигане на острова с малък кораб</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/13.avif" type="image/avif">
+                    <source srcset="images/13.webp" type="image/webp">
+                    <img src="images/13.jpg"
+                     alt="Защитена колония средиземноморски чайки в природен резерват"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Защитена колония средиземноморски чайки</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Нетронатата красота на малкия необитаем остров</h3>
+                <p>На около 40 минути с лодка от брега се издига малкият необитаем остров, известен сред рибарите като Острова на Бялата чайка. Наименованието идва от многобройните колонии средиземноморски чайки, лаещи чайки и рибарки, гнездящи по скалистото южно крайбрежие — защитена природна зона от 1974 година.</p>
+                <p>Екскурзията включва морски преход с малък кораб, разходка по единствената маркирана пътека на острова — 4 километра между хвойнови храсти и каменисти поляни — и час и половина свободно време на уединения северен плаж. Снорклингът е особено препоръчителен: подводният свят е нетронат и изключително богат на морски живот.</p>
+                <p>Поради природозащитния статут посещенията са ограничени до 20 групи на сезон. Препоръчваме ранна резервация. Носете достатъчно вода — на острова почти няма сянка извън пътеката в хвойновата гора.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Острова на Бялата чайка">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">Цял ден (11 ч.)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Транспорт</span><span class="meta-val">Автобус + кораб</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">Обяд на борда, биолог</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Юни – Септември</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">89 лв. / човек</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+
+<!-- ==================== ЕКСКУРЗИЯ 05 ==================== -->
+<section class="exc-section" id="exc-5" aria-label="Екскурзия 05 — Мраморните пещери">
+    <div class="exc-banner" data-bg="images/14">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 05</span>
+            <h2>Мраморните пещери</h2>
+            <p class="banner-meta">От <strong>42 лв.</strong> · Целогодишно · 6–7 часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/15.avif" type="image/avif">
+                    <source srcset="images/15.webp" type="image/webp">
+                    <img src="images/15.jpg"
+                     alt="Входът на Мраморните пещери — природен феномен"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Входът на Мраморните пещери</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/16.avif" type="image/avif">
+                    <source srcset="images/16.webp" type="image/webp">
+                    <img src="images/16.jpg"
+                     alt="Хилядолетни сталактити в Кристалната галерия"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Хилядолетни сталактити в Кристалната галерия</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Под земята: един друг свят от мрамор и кристал</h3>
+                <p>Мраморните пещери са природен феномен, образуван преди около 15 милиона години, когато кисели подземни води са проядали пътищата си през масива от бял и розов мрамор. Резултатът е зашеметяваща поредица от зали, коридори и подземни езера — обща дължина на изследваните тунели: 4.7 км, от които 900 метра са отворени за посещения.</p>
+                <p>Туристическата обиколка отнема около 75 минути и преминава покрай Голямата зала (72 м. куполен таван), Езерото на отражението и Кристалната галерия — стена, покрита изцяло с калцитни кристали, блестящи под специализираното осветление. Гидовете разказват легендите, свързвали пещерата с тракийски ритуали от желязната епоха.</p>
+                <p>Температурата вътре е постоянна 12°C — носете лека якичка дори в летните месеци. Обувките трябва да са затворени и нехлъзгащи. Подходящо за деца над 4 години. Не се препоръчва за хора с тежка клаустрофобия.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Мраморните пещери">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">6 – 7 часа</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">Билети, каска, водач</span></div>
+                <div class="meta-row"><span class="meta-lbl">Подходящо за</span><span class="meta-val">Деца 4+, семейства</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Целогодишно</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">42 лв. / човек</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ==================== ПОВЕЧЕ ЕКСКУРЗИИ ==================== -->
+<section aria-label="Още екскурзии" style="background:var(--navy);padding:6rem 5rem;text-align:center;position:relative;overflow:hidden;">
+    <div style="max-width:720px;margin:0 auto;position:relative;z-index:2;">
+        <span class="section-tag">Още дестинации</span>
+        <h2 class="contact-title">Открий <em>повече</em><br>приключения</h2>
+        <div class="title-rule"></div>
+        <p class="contact-intro">Имаме още вълнуващи маршрути — от скрити плажове до планински върхове. Разгледай пълния списък с дестинации и избери следващото си приключение.</p>
+        <a href="excursions-bg.html" class="hero-cta" style="opacity:1;animation:none;">Виж всички екскурзии</a>
+    </div>
+</section>
+
+
+<!-- ==================== КОНТАКТИ ==================== -->
+<section id="contact" aria-label="Форма за контакт">
+    <div class="contact-inner">
+        <div class="contact-head">
+            <span class="section-tag">Свържете се с нас</span>
+            <h2 class="contact-title">Готов за <em>следващото</em><br>приключение?</h2>
+            <div class="title-rule"></div>
+        </div>
+        <p class="contact-intro">
+            Попълнете формата и нашият екип ще се свърже с вас в рамките на 24 часа с налични дати, подробности и персонализирана оферта.
+        </p>
+
+        <!-- Директни контакти — видими само на десктоп -->
+        <div class="contact-alt" aria-label="Директни контакти">
+            <a href="tel:+359000000000" class="contact-alt-item" aria-label="Обадете се">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>[PLACEHOLDER — +359 88 ...]</span>
+            </a>
+            <span class="contact-alt-sep" aria-hidden="true"></span>
+            <a href="mailto:contact@rokko.bg" class="contact-alt-item" aria-label="Изпратете имейл">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>[PLACEHOLDER — contact@rokko.bg]</span>
+            </a>
+            <span class="contact-alt-sep" aria-hidden="true"></span>
+            <a href="https://wa.me/359000000000" class="contact-alt-item contact-alt-item--wa" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                <span>WhatsApp</span>
+            </a>
+        </div>
+
+        <form id="contactForm"
+              action="/api/contact"
+              method="POST"
+              novalidate
+              class="cform">
+
+            <input type="hidden" name="_subject" value="Ново запитване от ROKKO сайт">
+            <input type="text"   name="_gotcha"  style="display:none" aria-hidden="true" tabindex="-1">
+
+            <div class="fg">
+                <label for="f-name">Вашето Име <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-name" name="name" type="text"
+                       placeholder="Иван Иванов"
+                       required autocomplete="name"
+                       aria-describedby="name-err">
+                <span class="field-err" id="name-err" role="alert">Моля, въведете вашето име.</span>
+            </div>
+            <div class="fg">
+                <label for="f-email">Имейл адрес <span class="req" aria-hidden="true">*</span></label>
+                <input id="f-email" name="email" type="email"
+                       placeholder="ivan@example.com"
+                       required autocomplete="email"
+                       pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                       aria-describedby="email-err">
+                <span class="field-err" id="email-err" role="alert">Моля, въведете валиден имейл.</span>
+            </div>
+            <div class="fg">
+                <label for="f-phone">Телефон</label>
+                <input id="f-phone" name="phone" type="tel"
+                       placeholder="+359 88 ..." autocomplete="tel">
+            </div>
+            <div class="fg">
+                <label for="f-exc">Желана екскурзия</label>
+                <select id="f-exc" name="excursion">
+                    <option value="">— Изберете —</option>
+                    <option>Лазурен залив</option>
+                    <option>Горският рай</option>
+                    <option>Слънчев хълм</option>
+                    <option>Островът на Бялата чайка</option>
+                    <option>Мраморните пещери</option>
+                    <option>Не съм сигурен / Питам за повече</option>
+                </select>
+            </div>
+            <div class="fg">
+                <label for="f-people">Брой хора</label>
+                <input id="f-people" name="people" type="number" min="1" max="50" placeholder="2">
+            </div>
+            <div class="fg">
+                <label for="f-date">Предпочитана дата</label>
+                <input id="f-date" name="date" type="date">
+            </div>
+            <div class="fg wide">
+                <label for="f-msg">Съобщение</label>
+                <textarea id="f-msg" name="message"
+                          placeholder="Специални изисквания, въпроси или пожелания? Разкажете ни..."></textarea>
+            </div>
+            <div class="submit-wrap">
+                <button class="btn-send" type="submit" id="sendBtn">Изпратете запитването</button>
+            </div>
+
+            <div id="form-success" class="form-msg form-msg--ok" role="status" aria-live="polite">
+                ✓ &nbsp;Съобщението е изпратено успешно! Ще се свържем с вас скоро.
+            </div>
+            <div id="form-error" class="form-msg form-msg--err" role="alert" aria-live="assertive">
+                ✕ &nbsp;Нещо се обърка. Моля, опитайте отново или ни пишете директно на имейл.
+            </div>
+        </form>
+    </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+    <a href="#home" class="logo" style="font-size:1.35rem;">RO<span>K</span>KO</a>
+    <p>© 2026 Rokko Day Trips</p>
+    <p>
+        <a href="privacy-policy.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;text-underline-offset:3px;">Поверителност</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;text-underline-offset:3px;">Общи условия</a>
+    </p>
+</footer>
+
+<!-- Sticky CTA (mobile) -->
+<div class="mobile-cta" role="region" aria-label="Бързи действия">
+    <a class="mcta-btn mcta-btn--primary" href="#contact">Запитване</a>
+    <a class="mcta-btn mcta-btn--outline" href="tel:+359000000000">[PLACEHOLDER] Обади се</a>
+    <a class="mcta-btn mcta-btn--wa" href="https://wa.me/359000000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<!-- Бутон "обратно към менюто" -->
+<button id="top-btn" title="Обратно към менюто" aria-label="Обратно към менюто">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+         aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"/>
+    </svg>
+    <span class="btn-text">Меню</span>
+</button>
+
+<!-- FIX: добавен defer атрибут — добра практика дори при <script> в края на body -->
+<!-- ==================== COOKIE BANNER ==================== -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Известие за бисквитки" hidden>
+    <p class="cookie-text">
+        Използваме само технически необходими бисквитки за запазване на езиковото ви предпочитание. Без проследяване, без реклами.
+        <a href="privacy-policy.html" class="cookie-link">Научи повече</a>
+    </p>
+    <div class="cookie-actions">
+        <button id="cookie-accept" class="cookie-btn cookie-btn--primary">Разбрах</button>
+        <button id="cookie-decline" class="cookie-btn cookie-btn--outline">Откажи</button>
+    </div>
+</div>
+
+<script src="main.js" defer></script>
+</body>
+</html>

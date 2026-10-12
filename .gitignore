@@ -1,0 +1,13 @@
+node_modules/
+
+# Local-only Claude Code settings (machine-specific)
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Raw photos dropped for processing — only the generated avif/webp/jpg in
+# images/ are committed as site assets (see tools/build-images.mjs)
+images/source/*
+!images/source/README.md

@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =====================================================
+         LANGUAGE REDIRECT
+         Изпълнява се ВЕДНАГА — преди render на каквото и да е.
+         Без async/defer, за да блокира рендерирането и да предотврати
+         мигане на грешна езикова версия (flash of wrong language).
+    ===================================================== -->
+    <script>
+    (function () {
+        if (location.protocol === 'file:') return;
+        var p = location.pathname.toLowerCase();
+        var kind =
+            (p.endsWith('/excursions-bg.html') || p.endsWith('excursions-bg.html')) ? 'excursions-bg' :
+            (p.endsWith('/excursions.html')     || p.endsWith('excursions.html'))    ? 'excursions'    :
+            (p.endsWith('/index-bg.html')       || p.endsWith('index-bg.html'))      ? 'index-bg'      :
+            (p.endsWith('/index.html')          || p.endsWith('index.html') || p === '/' || p.endsWith('/')) ? 'index' : null;
+        if (!kind) return;
+        var stored  = localStorage.getItem('lazur_lang') || '';
+        var docLang = document.documentElement.lang || '';
+        var lang    = (stored || docLang).toLowerCase().startsWith('en') ? 'en' : 'bg';
+        var want    =
+            (kind === 'index'      || kind === 'index-bg')     ? (lang === 'en' ? '/index.html'      : '/index-bg.html')      :
+            (kind === 'excursions' || kind === 'excursions-bg') ? (lang === 'en' ? '/excursions.html' : '/excursions-bg.html') : null;
+        if (!want) return;
+        var cur = location.pathname === '/' ? '/index.html' : location.pathname;
+        if (cur !== want) location.replace(want + location.hash);
+    }());
+    </script>
+
+    <title>More trips — ROKKO</title>
+    <meta name="description" content="More day trips (template) — add real destinations, images and prices.">
+
+    <!-- TODO: replace with real domain after deployment -->
+    <link rel="canonical" href="https://lazur-trips.com/excursions.html">
+    <link rel="alternate" hreflang="bg" href="https://lazur-trips.com/excursions-bg.html">
+    <link rel="alternate" hreflang="en" href="https://lazur-trips.com/excursions.html">
+    <link rel="alternate" hreflang="x-default" href="https://lazur-trips.com/">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230d1b2a'/><text y='.9em' font-size='70' x='50%' dominant-baseline='middle' text-anchor='middle' fill='%23c8a96e' font-family='serif' font-style='italic'>R</text></svg>">
+    <meta name="theme-color" content="#0d1b2a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <noscript>
+        <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+    </noscript>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav id="navbar">
+    <a href="index.html#home" class="logo">RO<span>K</span>KO</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#exc-1">Trips</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li class="lang-item">
+            <a class="lang-link" href="excursions-bg.html" data-lang="bg" aria-label="Превключи на български">BG</a>
+        </li>
+    </ul>
+    <button class="nav-toggle" id="navToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="navLinks">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<main id="main">
+
+<!-- ==================== HERO ==================== -->
+<section id="home" aria-label="More trips">
+    <picture>
+        <source srcset="images/1.avif" type="image/avif">
+        <source srcset="images/1.webp" type="image/webp">
+        <img class="hero-bg-img"
+         src="images/1.jpg"
+         alt=""
+         aria-hidden="true"
+         width="1600" height="900"
+         loading="eager"
+         fetchpriority="high">
+    </picture>
+    <div class="hero-content">
+        <p class="hero-eyebrow">Template &nbsp;<span style="color:var(--sand);opacity:0.8;">·</span>&nbsp; 6 extra trips</p>
+        <h1 class="hero-title">More<br><em>adventures</em><br>to add</h1>
+        <p class="hero-subtitle">This page is a template. Replace titles, descriptions, images and prices with real data.</p>
+        <div class="hero-facts" aria-label="Key information (template)">
+            <span class="fact-pill">(PLACEHOLDER) From 49 BGN</span>
+            <span class="fact-dot" aria-hidden="true">·</span>
+            <span class="fact-pill">(PLACEHOLDER) Season: Apr–Oct</span>
+            <span class="fact-dot" aria-hidden="true">·</span>
+            <span class="fact-pill">(PLACEHOLDER) Reply within 24 hours</span>
+        </div>
+        <a href="#extra-1" class="hero-cta">View template</a>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+        <div class="line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- ==================== TEMPLATE: 6 EXTRA TRIPS ==================== -->
+
+<section class="exc-section" id="extra-1" aria-label="Trip 06 — (PLACEHOLDER)">
+    <div class="exc-banner" data-bg="images/17.svg">
+        <div class="banner-label">
+            <span class="exc-num">Trip 06</span>
+            <h2>(PLACEHOLDER) Trip name</h2>
+            <p class="banner-meta">(PLACEHOLDER) From <strong>59 BGN</strong> · Apr–Oct · 8–10 hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <img src="images/18.svg"
+                     alt="(PLACEHOLDER) Photo 1"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <img src="images/19.svg"
+                     alt="(PLACEHOLDER) Photo 2"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>(PLACEHOLDER) Trip headline</h3>
+                <p>(PLACEHOLDER) 2–4 paragraphs: highlights, route, who it’s for, season, tips.</p>
+                <p>(PLACEHOLDER) Add unique angles: nature/history/beach/wine/SPA etc.</p>
+                <a href="index.html#contact" class="exc-book" aria-label="Enquire about trip 06">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">(PLACEHOLDER) 8–10 hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">(PLACEHOLDER) Bus/4x4/boat</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">(PLACEHOLDER) Tickets/guide/lunch</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">(PLACEHOLDER) Apr–Oct</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">(PLACEHOLDER) 59 BGN / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<section class="exc-section" id="extra-2" aria-label="Trip 07 — (PLACEHOLDER)">
+    <div class="exc-banner" data-bg="images/20.svg">
+        <div class="banner-label">
+            <span class="exc-num">Trip 07</span>
+            <h2>(PLACEHOLDER) Trip name</h2>
+            <p class="banner-meta">(PLACEHOLDER) From <strong>__ BGN</strong> · __ · __</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <img src="images/21.svg"
+                     alt="(PLACEHOLDER) Photo 1"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <img src="images/22.svg"
+                     alt="(PLACEHOLDER) Photo 2"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>(PLACEHOLDER) Trip headline</h3>
+                <p>(PLACEHOLDER) Description.</p>
+                <p>(PLACEHOLDER) Useful info: what to bring, who it’s for.</p>
+                <a href="index.html#contact" class="exc-book" aria-label="Enquire about trip 07">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">(PLACEHOLDER)</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<section class="exc-section" id="extra-3" aria-label="Trip 08 — (PLACEHOLDER)">
+    <div class="exc-banner" data-bg="images/23.svg">
+        <div class="banner-label">
+            <span class="exc-num">Trip 08</span>
+            <h2>(PLACEHOLDER) Trip name</h2>
+            <p class="banner-meta">(PLACEHOLDER) From <strong>__ BGN</strong> · __ · __</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <img src="images/24.svg"
+                     alt="(PLACEHOLDER) Photo 1"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <img src="images/25.svg"
+                     alt="(PLACEHOLDER) Photo 2"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>(PLACEHOLDER) Trip headline</h3>
+                <p>(PLACEHOLDER) Description.</p>
+                <p>(PLACEHOLDER) Description.</p>
+                <a href="index.html#contact" class="exc-book" aria-label="Enquire about trip 08">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">(PLACEHOLDER)</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<section class="exc-section" id="extra-4" aria-label="Trip 09 — (PLACEHOLDER)">
+    <div class="exc-banner" data-bg="images/26.svg">
+        <div class="banner-label">
+            <span class="exc-num">Trip 09</span>
+            <h2>(PLACEHOLDER) Trip name</h2>
+            <p class="banner-meta">(PLACEHOLDER) From <strong>__ BGN</strong> · __ · __</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <img src="images/27.svg"
+                     alt="(PLACEHOLDER) Photo 1"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <img src="images/28.svg"
+                     alt="(PLACEHOLDER) Photo 2"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>(PLACEHOLDER) Trip headline</h3>
+                <p>(PLACEHOLDER) Description.</p>
+                <p>(PLACEHOLDER) Description.</p>
+                <a href="index.html#contact" class="exc-book" aria-label="Enquire about trip 09">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">(PLACEHOLDER)</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<section class="exc-section" id="extra-5" aria-label="Trip 10 — (PLACEHOLDER)">
+    <div class="exc-banner" data-bg="images/29.svg">
+        <div class="banner-label">
+            <span class="exc-num">Trip 10</span>
+            <h2>(PLACEHOLDER) Trip name</h2>
+            <p class="banner-meta">(PLACEHOLDER) From <strong>__ BGN</strong> · __ · __</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <img src="images/30.svg"
+                     alt="(PLACEHOLDER) Photo 1"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <img src="images/31.svg"
+                     alt="(PLACEHOLDER) Photo 2"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>(PLACEHOLDER) Trip headline</h3>
+                <p>(PLACEHOLDER) Description.</p>
+                <p>(PLACEHOLDER) Description.</p>
+                <a href="index.html#contact" class="exc-book" aria-label="Enquire about trip 10">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">(PLACEHOLDER)</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<section class="exc-section" id="extra-6" aria-label="Trip 11 — (PLACEHOLDER)">
+    <div class="exc-banner" data-bg="images/32.svg">
+        <div class="banner-label">
+            <span class="exc-num">Trip 11</span>
+            <h2>(PLACEHOLDER) Trip name</h2>
+            <p class="banner-meta">(PLACEHOLDER) From <strong>__ BGN</strong> · __ · __</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <img src="images/33.svg"
+                     alt="(PLACEHOLDER) Photo 1"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <img src="images/34.svg"
+                     alt="(PLACEHOLDER) Photo 2"
+                     width="800" height="600"
+                     loading="lazy">
+                <figcaption>(PLACEHOLDER) Short caption</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>(PLACEHOLDER) Trip headline</h3>
+                <p>(PLACEHOLDER) Description.</p>
+                <p>(PLACEHOLDER) Description.</p>
+                <a href="index.html#contact" class="exc-book" aria-label="Enquire about trip 11">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">(PLACEHOLDER)</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">(PLACEHOLDER)</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+    <a href="index.html" class="logo" style="font-size:1.35rem;">RO<span>K</span>KO</a>
+    <p>© 2026 Rokko Day Trips</p>
+    <p>
+        <a href="privacy-policy.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;text-underline-offset:3px;">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="terms.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;text-underline-offset:3px;">Terms</a>
+    </p>
+</footer>
+
+<!-- Sticky CTA (mobile) -->
+<div class="mobile-cta" role="region" aria-label="Quick actions">
+    <a class="mcta-btn mcta-btn--primary" href="index.html#contact">Enquiry</a>
+    <a class="mcta-btn mcta-btn--outline" href="tel:+359000000000">[PLACEHOLDER] Call</a>
+    <a class="mcta-btn mcta-btn--wa" href="https://wa.me/359000000000" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="16" height="16" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        WhatsApp
+    </a>
+</div>
+
+<!-- Back to top -->
+<button id="top-btn" title="Back to menu" aria-label="Back to menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+         aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"/>
+    </svg>
+    <span class="btn-text">Menu</span>
+</button>
+
+<!-- ==================== COOKIE BANNER ==================== -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice" hidden>
+    <p class="cookie-text">
+        We use only technically necessary cookies to save your language preference. No tracking, no ads.
+        <a href="privacy-policy.html" class="cookie-link">Learn more</a>
+    </p>
+    <div class="cookie-actions">
+        <button id="cookie-accept" class="cookie-btn cookie-btn--primary">Got it</button>
+        <button id="cookie-decline" class="cookie-btn cookie-btn--outline">Decline</button>
+    </div>
+</div>
+
+<script src="main.js" defer></script>
+</body>
+</html>
+
