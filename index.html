@@ -14,26 +14,21 @@
         if (location.protocol === 'file:') return;
         var p = location.pathname.toLowerCase();
         var kind =
-            (p.endsWith('/excursions-bg.html') || p.endsWith('excursions-bg.html')) ? 'excursions-bg' :
-            (p.endsWith('/excursions.html')     || p.endsWith('excursions.html'))    ? 'excursions'    :
             (p.endsWith('/index-bg.html')       || p.endsWith('index-bg.html'))      ? 'index-bg'      :
             (p.endsWith('/index.html')          || p.endsWith('index.html') || p === '/' || p.endsWith('/')) ? 'index' : null;
         if (!kind) return;
         var stored  = localStorage.getItem('lazur_lang') || '';
         var docLang = document.documentElement.lang || '';
         var lang    = (stored || docLang).toLowerCase().startsWith('en') ? 'en' : 'bg';
-        var want    =
-            (kind === 'index'      || kind === 'index-bg')     ? (lang === 'en' ? '/index.html'      : '/index-bg.html')      :
-            (kind === 'excursions' || kind === 'excursions-bg') ? (lang === 'en' ? '/excursions.html' : '/excursions-bg.html') : null;
-        if (!want) return;
+        var want    = (lang === 'en' ? '/index.html' : '/index-bg.html');
         var cur = location.pathname === '/' ? '/index.html' : location.pathname;
         if (cur !== want) location.replace(want + location.hash);
     }());
     </script>
 
-    <title>ROKKO — Day Trips from Sofia | From 110 EUR</title>
+    <title>ROKKO — 9 Guided Day Trips from Sofia | From 100 EUR</title>
     <meta name="description"
-          content="Guided day trips from Sofia — the Valley of the Thracian Kings, Plovdiv, hiking in Pirin, the Buzludzha Monument and more. Private vehicle, guide and hotel pickup from 110 EUR per person.">
+          content="Guided day trips from Sofia — the Valley of the Thracian Kings, Plovdiv, hiking in Pirin, Buzludzha, Nis, Skopje, Matka Canyon and more. Private vehicle, guide and hotel pickup from 100 EUR per person.">
 
     <!-- TODO: replace with real domain after deployment -->
     <link rel="canonical" href="https://lazur-trips.com/">
@@ -46,8 +41,8 @@
 
     <meta property="og:type"        content="website">
     <meta property="og:url"         content="https://lazur-trips.com/">
-    <meta property="og:title"       content="ROKKO — Day Trips from Sofia | From 110 EUR">
-    <meta property="og:description" content="Thracian tombs, Balkan capitals, alpine lakes and communist-era monuments — guided day trips from Sofia with private transport, from 110 EUR.">
+    <meta property="og:title"       content="ROKKO — 9 Guided Day Trips from Sofia | From 100 EUR">
+    <meta property="og:description" content="Thracian tombs, Balkan capitals, alpine lakes and communist-era monuments — guided day trips from Sofia with private transport, from 100 EUR.">
     <meta property="og:image"       content="images/1.jpg">
     <meta property="og:image:width"  content="1200">
     <meta property="og:image:height" content="630">
@@ -56,8 +51,8 @@
     <meta property="og:site_name"   content="ROKKO Day Trips">
 
     <meta name="twitter:card"        content="summary_large_image">
-    <meta name="twitter:title"       content="ROKKO — Day Trips from Sofia | From 110 EUR">
-    <meta name="twitter:description" content="Guided day trips from Sofia with private transport. Book from 110 EUR per person.">
+    <meta name="twitter:title"       content="ROKKO — 9 Guided Day Trips from Sofia | From 100 EUR">
+    <meta name="twitter:description" content="Guided day trips from Sofia with private transport. Book from 100 EUR per person.">
     <meta name="twitter:image"       content="images/1.jpg">
 
     <script type="application/ld+json">
@@ -139,6 +134,54 @@
                     "price": "140",
                     "priceCurrency": "EUR",
                     "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Day Tour to Nis, Serbia",
+                        "description": "A cross-border day in Nis, from the Roman park at Medijana to the Skull Tower and Nis Fortress.",
+                        "touristType": ["History", "Cross-border"]
+                    },
+                    "price": "120",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Skopje & Matka Canyon",
+                        "description": "North Macedonia's capital with a local guide, followed by a boat ride through Matka Canyon.",
+                        "touristType": ["History", "Nature lovers", "Cross-border"]
+                    },
+                    "price": "190",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Skopje — Small Group",
+                        "description": "A small-group day in Skopje with two guides, covering the Old Bazaar, Macedonia Square and the Mother Teresa Memorial House.",
+                        "touristType": ["History", "Cross-border", "Small group"]
+                    },
+                    "price": "100",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Lovech, Devetashka Cave & Krushuna Waterfalls",
+                        "description": "A historic old town, a vast karst cave and the turquoise, terraced pools of the Krushuna waterfalls.",
+                        "touristType": ["History", "Nature lovers", "Families"]
+                    },
+                    "price": "120",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
                 }
             ]
         }
@@ -163,12 +206,7 @@
 <nav id="navbar">
     <a href="#home" class="logo">RO<span>K</span>KO</a>
     <ul class="nav-links" id="navLinks">
-        <li><a href="#exc-1">Sofia</a></li>
-        <li><a href="#exc-2">Thracian Kings</a></li>
-        <li><a href="#exc-3">Plovdiv</a></li>
-        <li><a href="#exc-4">Pirin &amp; Bansko</a></li>
-        <li><a href="#exc-5">Buzludzha</a></li>
-        <li><a href="excursions.html">More trips</a></li>
+        <li><a href="#trips">Trips</a></li>
         <li><a href="#contact">Contact</a></li>
         <li class="lang-item">
             <a class="lang-link" href="index-bg.html" data-lang="bg" aria-label="Превключи на български">BG</a>
@@ -204,13 +242,13 @@
         <h1 class="hero-title">Discover<br><em>new horizons</em><br>near you</h1>
         <p class="hero-subtitle">Guided day trips from Sofia — ancient history, mountain trails and Balkan capitals, just a comfortable drive away.</p>
         <div class="hero-facts" aria-label="Key information">
-            <span class="fact-pill">From 110 EUR / person</span>
+            <span class="fact-pill">From 100 EUR / person</span>
             <span class="fact-dot" aria-hidden="true">·</span>
             <span class="fact-pill">Season: year-round / May–Oct</span>
             <span class="fact-dot" aria-hidden="true">·</span>
             <span class="fact-pill">Reply within 24 hours</span>
         </div>
-        <a href="#exc-1" class="hero-cta">Explore trips</a>
+        <a href="#trips" class="hero-cta">Explore trips</a>
     </div>
     <div class="scroll-hint" aria-hidden="true">
         <div class="line"></div>
@@ -247,8 +285,25 @@
     </div>
 </section>
 
+<!-- ==================== TRIP FILTER ==================== -->
+<section class="trip-filter" aria-label="Find a trip" id="trips">
+    <div class="trip-filter-inner">
+        <input type="search" class="trip-search" id="tripSearch"
+               placeholder="Search trips — e.g. hiking, Plovdiv, caves…"
+               aria-label="Search trips">
+        <div class="filter-chips" role="group" aria-label="Filter by category">
+            <button type="button" class="filter-chip is-active" data-filter="all">All trips</button>
+            <button type="button" class="filter-chip" data-filter="history">History</button>
+            <button type="button" class="filter-chip" data-filter="nature">Nature</button>
+            <button type="button" class="filter-chip" data-filter="unesco">UNESCO</button>
+            <button type="button" class="filter-chip" data-filter="cross-border">Cross-border</button>
+        </div>
+        <p class="trip-empty" id="tripEmpty">No trips match — try a different search or filter.</p>
+    </div>
+</section>
+
 <!-- ==================== TRIP 01 — SOFIA ==================== -->
-<section class="exc-section" id="exc-1" aria-label="Trip 01 — Full Day Tour of Sofia">
+<section class="exc-section" id="exc-1" data-tags="history city" aria-label="Trip 01 — Full Day Tour of Sofia">
     <div class="exc-banner" data-bg="images/2">
         <div class="banner-label">
             <span class="exc-num">Trip 01</span>
@@ -302,7 +357,7 @@
 <div class="sep" role="separator"></div>
 
 <!-- ==================== TRIP 02 — THRACIAN KINGS ==================== -->
-<section class="exc-section" id="exc-2" aria-label="Trip 02 — Valley of the Thracian Kings">
+<section class="exc-section" id="exc-2" data-tags="history unesco" aria-label="Trip 02 — Valley of the Thracian Kings">
     <div class="exc-banner" data-bg="images/5">
         <div class="banner-label">
             <span class="exc-num">Trip 02</span>
@@ -355,7 +410,7 @@
 <div class="sep" role="separator"></div>
 
 <!-- ==================== TRIP 03 — PLOVDIV ==================== -->
-<section class="exc-section" id="exc-3" aria-label="Trip 03 — Plovdiv, History and Craft Beer">
+<section class="exc-section" id="exc-3" data-tags="history city" aria-label="Trip 03 — Plovdiv, History and Craft Beer">
     <div class="exc-banner" data-bg="images/8">
         <div class="banner-label">
             <span class="exc-num">Trip 03</span>
@@ -408,7 +463,7 @@
 <div class="sep" role="separator"></div>
 
 <!-- ==================== TRIP 04 — PIRIN & BANSKO ==================== -->
-<section class="exc-section" id="exc-4" aria-label="Trip 04 — Hiking in Pirin and Bansko">
+<section class="exc-section" id="exc-4" data-tags="nature unesco" aria-label="Trip 04 — Hiking in Pirin and Bansko">
     <div class="exc-banner" data-bg="images/11">
         <div class="banner-label">
             <span class="exc-num">Trip 04</span>
@@ -461,7 +516,7 @@
 <div class="sep" role="separator"></div>
 
 <!-- ==================== TRIP 05 — BUZLUDZHA ==================== -->
-<section class="exc-section" id="exc-5" aria-label="Trip 05 — Buzludzha Monument and Museum of Socialist Art">
+<section class="exc-section" id="exc-5" data-tags="history" aria-label="Trip 05 — Buzludzha Monument and Museum of Socialist Art">
     <div class="exc-banner" data-bg="images/14">
         <div class="banner-label">
             <span class="exc-num">Trip 05</span>
@@ -511,16 +566,216 @@
         </div>
     </div>
 </section>
+<div class="sep" role="separator"></div>
 
+<!-- ==================== TRIP 06 — NIS, SERBIA ==================== -->
+<section class="exc-section" id="exc-6" data-tags="history cross-border" aria-label="Trip 06 — Day Tour to Nis, Serbia">
+    <div class="exc-banner" data-bg="images/17">
+        <div class="banner-label">
+            <span class="exc-num">Trip 06</span>
+            <h2>Day Tour to Nis, Serbia</h2>
+            <p class="banner-meta">From <strong>120 EUR</strong> · Year-round · 10 hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/18.avif" type="image/avif">
+                    <source srcset="images/18.webp" type="image/webp">
+                    <img src="images/18.jpg"
+                     alt="Nis Fortress at night"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Nis Fortress</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/19.avif" type="image/avif">
+                    <source srcset="images/19.webp" type="image/webp">
+                    <img src="images/19.jpg"
+                     alt="The historic gates of the Ottoman-era fortress in Nis"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>The fortress gates</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Rome, empire and resistance, across the border</h3>
+                <p>Nis gave the world Constantine the Great, and its layered history runs from the Roman era through Ottoman rule to the 20th century. We start at Medijana, a Roman archaeological park, then visit the Skull Tower — a haunting monument built by the Ottomans from the skulls of Serbian and Bulgarian rebels.</p>
+                <p>The Nazi Concentration Camp, remarkably preserved and the site of a successful 1942 escape, brings the 20th century into focus, before we end at Nis Fortress and a relaxed lunch of traditional Serbian food in the old town.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about the Nis tour">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">10 hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">Private vehicle</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">Guide, hotel pickup, entrance fees</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">Year-round</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">120 EUR / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
 
-<!-- ==================== MORE TRIPS ==================== -->
-<section aria-label="More trips" style="background:var(--navy);padding:6rem 5rem;text-align:center;position:relative;overflow:hidden;">
-    <div style="max-width:720px;margin:0 auto;position:relative;z-index:2;">
-        <span class="section-tag">More destinations</span>
-        <h2 class="contact-title">Discover <em>more</em><br>adventures</h2>
-        <div class="title-rule"></div>
-        <p class="contact-intro">Four more routes await — from Balkan capitals to hidden waterfalls. Browse the full list and pick your next adventure.</p>
-        <a href="excursions.html" class="hero-cta" style="opacity:1;animation:none;">View all trips</a>
+<!-- ==================== TRIP 07 — SKOPJE & MATKA CANYON ==================== -->
+<section class="exc-section" id="exc-7" data-tags="nature cross-border city" aria-label="Trip 07 — Skopje and Matka Canyon">
+    <div class="exc-banner" data-bg="images/20">
+        <div class="banner-label">
+            <span class="exc-num">Trip 07</span>
+            <h2>Skopje &amp; Matka Canyon</h2>
+            <p class="banner-meta">From <strong>190 EUR</strong> · Apr–Oct · 12+ hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/21.avif" type="image/avif">
+                    <source srcset="images/21.webp" type="image/webp">
+                    <img src="images/21.jpg"
+                     alt="Matka Canyon, carved by the Treska river"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Matka Canyon</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/22.avif" type="image/avif">
+                    <source srcset="images/22.webp" type="image/webp">
+                    <img src="images/22.jpg"
+                     alt="The still water beneath Matka's limestone cliffs"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Boat ride through the canyon</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Two capitals' worth of history, one canyon of calm</h3>
+                <p>North Macedonia's capital is a study in contrasts — the authentic Ottoman-era Old Bazaar sits across the river from the neo-classical new center built under the "Skopje 2014" project. A local Macedonian guide joins us for two hours to share a perspective our own guide can't.</p>
+                <p>We walk the Old Fortress, the 15th-century Sultan Murat Mosque, and cross the centuries-old Stone Bridge before reaching Macedonia Square and the Gate Macedonia triumphal arch. In the afternoon we trade history for nature at Matka Canyon, with time for a boat ride past one of the deepest underwater caves in the world.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about Skopje and Matka Canyon">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">12+ hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">Private vehicle</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">BG guide + local MK guide, hotel pickup, entrance fees</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">April–October</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">190 EUR / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<!-- ==================== TRIP 08 — SKOPJE SMALL GROUP ==================== -->
+<section class="exc-section" id="exc-8" data-tags="history cross-border city" aria-label="Trip 08 — Skopje, Small Group">
+    <div class="exc-banner" data-bg="images/23">
+        <div class="banner-label">
+            <span class="exc-num">Trip 08</span>
+            <h2>Skopje — Small Group</h2>
+            <p class="banner-meta">From <strong>100 EUR</strong> · Year-round · 12 hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/24.avif" type="image/avif">
+                    <source srcset="images/24.webp" type="image/webp">
+                    <img src="images/24.jpg"
+                     alt="Macedonia Square and the Alexander the Great monument in Skopje"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Macedonia Square</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/25.avif" type="image/avif">
+                    <source srcset="images/25.webp" type="image/webp">
+                    <img src="images/25.jpg"
+                     alt="Central Skopje on a clear day"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Central Skopje</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Skopje, unhurried and in small company</h3>
+                <p>Tick off another Balkan capital in a day, with two professional guides — one Bulgarian, one local Macedonian — sharing both sides of the story. Skopje's mix of Ottoman-era monuments and the ornate neo-classical buildings of the "Skopje 2014" rebuild makes it one of the more surprising cities in the region.</p>
+                <p>Highlights include the Old Fortress, the Sultan Murat Mosque, the Old Bazaar's historic caravanserais, and the new Macedonia Square with its monument to Alexander the Great. We also stop at the Mother Teresa Memorial House, dedicated to Skopje's most famous native, before finishing at the Gate Macedonia arch.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about the Skopje small group tour">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">12 hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">Private vehicle</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">BG guide + local MK guide, hotel pickup, entrance fees</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">Year-round</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">100 EUR / person</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<!-- ==================== TRIP 09 — LOVECH, DEVETASHKA CAVE & KRUSHUNA ==================== -->
+<section class="exc-section" id="exc-9" data-tags="nature" aria-label="Trip 09 — Lovech, Devetashka Cave and Krushuna Waterfalls">
+    <div class="exc-banner" data-bg="images/26">
+        <div class="banner-label">
+            <span class="exc-num">Trip 09</span>
+            <h2>Lovech, Devetashka Cave &amp; Krushuna Waterfalls</h2>
+            <p class="banner-meta">From <strong>120 EUR</strong> · Year-round · 8+ hours</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/27.avif" type="image/avif">
+                    <source srcset="images/27.webp" type="image/webp">
+                    <img src="images/27.jpg"
+                     alt="The terraced, turquoise pools of Krushuna waterfalls"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Krushuna waterfalls</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/28.avif" type="image/avif">
+                    <source srcset="images/28.webp" type="image/webp">
+                    <img src="images/28.jpg"
+                     alt="Cascading water through the forest at Krushuna"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Cascading water through the forest</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>A historic town, a cave, and turquoise cascades</h3>
+                <p>One of Bulgaria's continuously inhabited towns, Lovech's old quarter rewards a slow walk through cobbled streets past 19th-century houses, the Vassil Levski Museum, the Hisarya Fortress, and the Covered Bridge — a 19th-century landmark built by master craftsman Kolyo Ficheto.</p>
+                <p>From there it's a short drive to Devetashka Cave, a vast karst chamber once used as a military base, and on to the turquoise, terraced pools of the Krushuna waterfalls — a walk through forest and cascading water that closes out the day.</p>
+                <a href="#contact" class="exc-book" aria-label="Enquire about Lovech, Devetashka Cave and Krushuna">Enquire now &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Duration</span><span class="meta-val">8+ hours</span></div>
+                <div class="meta-row"><span class="meta-lbl">Transport</span><span class="meta-val">Private vehicle</span></div>
+                <div class="meta-row"><span class="meta-lbl">Included</span><span class="meta-val">Guide, hotel pickup, entrance fees</span></div>
+                <div class="meta-row"><span class="meta-lbl">Season</span><span class="meta-val">Year-round</span></div>
+                <div class="meta-row"><span class="meta-lbl">From</span><span class="meta-val">120 EUR / person</span></div>
+            </div>
+        </div>
     </div>
 </section>
 

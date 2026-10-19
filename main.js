@@ -327,3 +327,62 @@ if (contactForm) {
     btnAccept.addEventListener('click',  function () { dismiss(true);  });
     btnDecline.addEventListener('click', function () { dismiss(false); });
 }());
+
+/* ---- Trip filter (search + category chips) ----
+   Sections start visible so the existing reveal/lazy-load setup above
+   behaves exactly as before; filtering only hides/shows afterwards, and
+   force-reveals + force-loads anything a filter brings into view that
+   the IntersectionObserver never reached (it was off-screen while
+   hidden, so it never fired). */
+(function () {
+    var sections = document.querySelectorAll('.exc-section[data-tags]');
+    if (!sections.length) return;
+
+    var searchInput = document.getElementById('tripSearch');
+    var chips       = document.querySelectorAll('.filter-chip');
+    var emptyMsg    = document.getElementById('tripEmpty');
+    var activeFilter = 'all';
+
+    function revealNow(section) {
+        section.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+        var banner = section.querySelector('.exc-banner[data-bg]');
+        if (banner && !banner.style.backgroundImage) {
+            resolveBannerUrl(banner.dataset.bg).then(function (url) {
+                banner.style.backgroundImage = "url('" + url + "')";
+            });
+        }
+    }
+
+    function apply() {
+        var q = ((searchInput && searchInput.value) || '').trim().toLowerCase();
+        var visible = 0;
+        sections.forEach(function (section) {
+            var tags = (section.dataset.tags || '').toLowerCase().split(' ');
+            var matchesFilter = activeFilter === 'all' || tags.indexOf(activeFilter) !== -1;
+            var matchesSearch = !q || section.textContent.toLowerCase().indexOf(q) !== -1;
+            var show = matchesFilter && matchesSearch;
+            section.hidden = !show;
+            var sep = section.nextElementSibling;
+            if (sep && sep.classList.contains('sep')) sep.hidden = !show;
+            if (show) { visible++; revealNow(section); }
+        });
+        if (emptyMsg) emptyMsg.classList.toggle('is-visible', visible === 0);
+    }
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            chips.forEach(function (c) { c.classList.remove('is-active'); });
+            chip.classList.add('is-active');
+            activeFilter = chip.dataset.filter;
+            apply();
+        });
+    });
+
+    if (searchInput) {
+        var debounce;
+        searchInput.addEventListener('input', function () {
+            clearTimeout(debounce);
+            debounce = setTimeout(apply, 120);
+        });
+    }
+}());

@@ -1,0 +1,5 @@
+# Trips moved from separate pages into the homepage's #trips section.
+# The excursions.html/excursions-bg.html files still exist as a client-side
+# fallback (meta refresh + JS) in case this file is ever skipped.
+/excursions.html     /index.html#trips      301
+/excursions-bg.html  /index-bg.html#trips   301

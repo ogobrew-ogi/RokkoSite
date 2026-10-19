@@ -33,6 +33,15 @@
 /main.js
   Cache-Control: public, max-age=31536000, immutable
 
+# Снимки — кеш за 7 дни (не 1 година/immutable като CSS/JS), защото
+# файловите имена НЕ са версионирани (1.jpg си остава 1.jpg дори когато
+# подмениш съдържанието му). По-дълъг кеш би скрил бъдещи подмени на
+# снимки с до 1 година за вече посетили сайта потребители.
+# Когато снимките са финални (след launch), смени на:
+#   Cache-Control: public, max-age=31536000, immutable
+/images/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
 # HTML никога не се кешира (за да виждат потребителите промените веднага)
 /index.html
   Cache-Control: no-cache, no-store, must-revalidate

@@ -14,18 +14,13 @@
         if (location.protocol === 'file:') return;
         var p = location.pathname.toLowerCase();
         var kind =
-            (p.endsWith('/excursions-bg.html') || p.endsWith('excursions-bg.html')) ? 'excursions-bg' :
-            (p.endsWith('/excursions.html')     || p.endsWith('excursions.html'))    ? 'excursions'    :
             (p.endsWith('/index-bg.html')       || p.endsWith('index-bg.html'))      ? 'index-bg'      :
             (p.endsWith('/index.html')          || p.endsWith('index.html') || p === '/' || p.endsWith('/')) ? 'index' : null;
         if (!kind) return;
         var stored  = localStorage.getItem('lazur_lang') || '';
         var docLang = document.documentElement.lang || '';
         var lang    = (stored || docLang).toLowerCase().startsWith('en') ? 'en' : 'bg';
-        var want    =
-            (kind === 'index'      || kind === 'index-bg')     ? (lang === 'en' ? '/index.html'      : '/index-bg.html')      :
-            (kind === 'excursions' || kind === 'excursions-bg') ? (lang === 'en' ? '/excursions.html' : '/excursions-bg.html') : null;
-        if (!want) return;
+        var want    = (lang === 'en' ? '/index.html' : '/index-bg.html');
         var cur = location.pathname === '/' ? '/index.html' : location.pathname;
         if (cur !== want) location.replace(want + location.hash);
     }());
@@ -37,10 +32,10 @@
                 когато качиш сайта
     ===================================================== -->
 
-    <title>ROKKO — Дневни Екскурзии от София | От 110 EUR</title>
+    <title>ROKKO — 9 Дневни Екскурзии от София | От 100 EUR</title>
 
     <meta name="description"
-          content="Дневни екскурзии с водач от София — Долината на тракийските царе, Пловдив, хайкинг в Пирин, паметникът Бузлуджа и още. Частен транспорт, водач и трансфер от хотел от 110 EUR на човек.">
+          content="Дневни екскурзии с водач от София — Долината на тракийските царе, Пловдив, хайкинг в Пирин, Бузлуджа, Ниш, Скопие, каньона Матка и още. Частен транспорт, водач и трансфер от хотел от 100 EUR на човек.">
 
     <!-- FIX: canonical — казва на Google кой е официалният URL -->
     <link rel="canonical" href="https://lazur-trips.com/index-bg.html">
@@ -66,8 +61,8 @@
     ===================================================== -->
     <meta property="og:type"        content="website">
     <meta property="og:url"         content="https://lazur-trips.com/index-bg.html">
-    <meta property="og:title"       content="ROKKO — Дневни Екскурзии от София | От 110 EUR">
-    <meta property="og:description" content="Тракийски гробници, балкански столици, алпийски езера и паметници от социалистическата епоха — дневни екскурзии с водач от София, от 110 EUR.">
+    <meta property="og:title"       content="ROKKO — 9 Дневни Екскурзии от София | От 100 EUR">
+    <meta property="og:description" content="Тракийски гробници, балкански столици, алпийски езера и паметници от социалистическата епоха — дневни екскурзии с водач от София, от 100 EUR.">
     <meta property="og:image"       content="images/1.jpg">
     <meta property="og:image:width"  content="1200">
     <meta property="og:image:height" content="630">
@@ -79,8 +74,8 @@
          TWITTER / X CARDS
     ===================================================== -->
     <meta name="twitter:card"        content="summary_large_image">
-    <meta name="twitter:title"       content="ROKKO — Дневни Екскурзии от София | От 110 EUR">
-    <meta name="twitter:description" content="Дневни екскурзии с водач от София и частен транспорт. Резервирай от 110 EUR на човек.">
+    <meta name="twitter:title"       content="ROKKO — 9 Дневни Екскурзии от София | От 100 EUR">
+    <meta name="twitter:description" content="Дневни екскурзии с водач от София и частен транспорт. Резервирай от 100 EUR на човек.">
     <meta name="twitter:image"       content="images/1.jpg">
 
     <!-- =====================================================
@@ -165,6 +160,54 @@
                     "price": "140",
                     "priceCurrency": "EUR",
                     "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Ниш, Сърбия",
+                        "description": "Трансграничен ден в Ниш — от римския парк Медиана до Кулата на черепите и крепостта на Ниш.",
+                        "touristType": ["История", "Отвъд границата"]
+                    },
+                    "price": "120",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Скопие и каньона Матка",
+                        "description": "Столицата на Северна Македония с местен гид, последвана от разходка с лодка през каньона Матка.",
+                        "touristType": ["История", "Природа", "Отвъд границата"]
+                    },
+                    "price": "190",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Скопие — малка група",
+                        "description": "Ден в Скопие в малка група с двама гидове — Старият базар, площад „Македония“ и Домът-музей на Майка Тереза.",
+                        "touristType": ["История", "Отвъд границата", "Малка група"]
+                    },
+                    "price": "100",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "TouristTrip",
+                        "name": "Ловеч, Деветашка пещера и Крушунски водопади",
+                        "description": "Исторически стар град, огромна карстова пещера и бирюзовите, терасовидни басейни на Крушунските водопади.",
+                        "touristType": ["История", "Природа", "Семейства"]
+                    },
+                    "price": "120",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
                 }
             ]
         }
@@ -196,12 +239,7 @@
 <nav id="navbar">
     <a href="#home" class="logo">RO<span>K</span>KO</a>
     <ul class="nav-links" id="navLinks">
-        <li><a href="#exc-1">София</a></li>
-        <li><a href="#exc-2">Тракийски царе</a></li>
-        <li><a href="#exc-3">Пловдив</a></li>
-        <li><a href="#exc-4">Пирин и Банско</a></li>
-        <li><a href="#exc-5">Бузлуджа</a></li>
-        <li><a href="excursions-bg.html">Още екскурзии</a></li>
+        <li><a href="#trips">Екскурзии</a></li>
         <li><a href="#contact">Контакти</a></li>
         <li class="lang-item">
             <a class="lang-link" href="index.html" data-lang="en" aria-label="Switch to English">EN</a>
@@ -237,13 +275,13 @@
         <h1 class="hero-title">Открий<br><em>хоризонтите</em><br>около теб</h1>
         <p class="hero-subtitle">Дневни екскурзии с водач от София — древна история, планински пътеки и балкански столици, на удобно разстояние с кола.</p>
         <div class="hero-facts" aria-label="Основна информация">
-            <span class="fact-pill">От 110 EUR / човек</span>
+            <span class="fact-pill">От 100 EUR / човек</span>
             <span class="fact-dot" aria-hidden="true">·</span>
             <span class="fact-pill">Сезон: целогодишно / Май–Окт</span>
             <span class="fact-dot" aria-hidden="true">·</span>
             <span class="fact-pill">Отговор до 24 часа</span>
         </div>
-        <a href="#exc-1" class="hero-cta">Разгледай екскурзиите</a>
+        <a href="#trips" class="hero-cta">Разгледай екскурзиите</a>
     </div>
     <div class="scroll-hint" aria-hidden="true">
         <div class="line"></div>
@@ -280,9 +318,25 @@
     </div>
 </section>
 
+<!-- ==================== ФИЛТЪР НА ЕКСКУРЗИИ ==================== -->
+<section class="trip-filter" aria-label="Намери екскурзия" id="trips">
+    <div class="trip-filter-inner">
+        <input type="search" class="trip-search" id="tripSearch"
+               placeholder="Търси екскурзия — напр. хайкинг, Пловдив, пещери…"
+               aria-label="Търси екскурзии">
+        <div class="filter-chips" role="group" aria-label="Филтър по категория">
+            <button type="button" class="filter-chip is-active" data-filter="all">Всички</button>
+            <button type="button" class="filter-chip" data-filter="history">История</button>
+            <button type="button" class="filter-chip" data-filter="nature">Природа</button>
+            <button type="button" class="filter-chip" data-filter="unesco">ЮНЕСКО</button>
+            <button type="button" class="filter-chip" data-filter="cross-border">Отвъд границата</button>
+        </div>
+        <p class="trip-empty" id="tripEmpty">Няма съвпадения — пробвай друго търсене или филтър.</p>
+    </div>
+</section>
 
 <!-- ==================== ЕКСКУРЗИЯ 01 — СОФИЯ ==================== -->
-<section class="exc-section" id="exc-1" aria-label="Екскурзия 01 — Целодневна обиколка на София">
+<section class="exc-section" id="exc-1" data-tags="history city" aria-label="Екскурзия 01 — Целодневна обиколка на София">
     <div class="exc-banner" data-bg="images/2">
         <div class="banner-label">
             <span class="exc-num">Екскурзия 01</span>
@@ -334,9 +388,8 @@
 </section>
 <div class="sep" role="separator"></div>
 
-
 <!-- ==================== ЕКСКУРЗИЯ 02 — ТРАКИЙСКИ ЦАРЕ ==================== -->
-<section class="exc-section" id="exc-2" aria-label="Екскурзия 02 — Долина на тракийските царе">
+<section class="exc-section" id="exc-2" data-tags="history unesco" aria-label="Екскурзия 02 — Долина на тракийските царе">
     <div class="exc-banner" data-bg="images/5">
         <div class="banner-label">
             <span class="exc-num">Екскурзия 02</span>
@@ -388,9 +441,8 @@
 </section>
 <div class="sep" role="separator"></div>
 
-
 <!-- ==================== ЕКСКУРЗИЯ 03 — ПЛОВДИВ ==================== -->
-<section class="exc-section" id="exc-3" aria-label="Екскурзия 03 — Пловдив, история и крафт бира">
+<section class="exc-section" id="exc-3" data-tags="history city" aria-label="Екскурзия 03 — Пловдив, история и крафт бира">
     <div class="exc-banner" data-bg="images/8">
         <div class="banner-label">
             <span class="exc-num">Екскурзия 03</span>
@@ -442,9 +494,8 @@
 </section>
 <div class="sep" role="separator"></div>
 
-
 <!-- ==================== ЕКСКУРЗИЯ 04 — ПИРИН И БАНСКО ==================== -->
-<section class="exc-section" id="exc-4" aria-label="Екскурзия 04 — Хайкинг в Пирин и Банско">
+<section class="exc-section" id="exc-4" data-tags="nature unesco" aria-label="Екскурзия 04 — Хайкинг в Пирин и Банско">
     <div class="exc-banner" data-bg="images/11">
         <div class="banner-label">
             <span class="exc-num">Екскурзия 04</span>
@@ -496,9 +547,8 @@
 </section>
 <div class="sep" role="separator"></div>
 
-
 <!-- ==================== ЕКСКУРЗИЯ 05 — БУЗЛУДЖА ==================== -->
-<section class="exc-section" id="exc-5" aria-label="Екскурзия 05 — Бузлуджа и Музей на социалистическото изкуство">
+<section class="exc-section" id="exc-5" data-tags="history" aria-label="Екскурзия 05 — Бузлуджа и Музей на социалистическото изкуство">
     <div class="exc-banner" data-bg="images/14">
         <div class="banner-label">
             <span class="exc-num">Екскурзия 05</span>
@@ -548,16 +598,216 @@
         </div>
     </div>
 </section>
+<div class="sep" role="separator"></div>
 
+<!-- ==================== ЕКСКУРЗИЯ 06 — НИШ ==================== -->
+<section class="exc-section" id="exc-6" data-tags="history cross-border" aria-label="Екскурзия 06 — Ниш, Сърбия">
+    <div class="exc-banner" data-bg="images/17">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 06</span>
+            <h2>Ниш, Сърбия</h2>
+            <p class="banner-meta">От <strong>120 EUR</strong> · Целогодишно · 10 часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/18.avif" type="image/avif">
+                    <source srcset="images/18.webp" type="image/webp">
+                    <img src="images/18.jpg"
+                     alt="Крепостта на Ниш през нощта"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Крепостта на Ниш</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/19.avif" type="image/avif">
+                    <source srcset="images/19.webp" type="image/webp">
+                    <img src="images/19.jpg"
+                     alt="Историческите порти на османската крепост в Ниш"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Портите на крепостта</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Рим, империя и съпротива, отвъд границата</h3>
+                <p>Ниш дава на света Константин Велики, а пластовата му история преминава през римската епоха, османското владичество и 20-ти век. Започваме в Медиана, римски археологически парк, след което посещаваме Кулата на черепите — смразяващ паметник, издигнат от османците от черепите на сръбски и български бунтовници.</p>
+                <p>Нацисткият концентрационен лагер, забележително запазен и място на успешен побег през 1942 г., пренася историята към 20-ти век, преди да завършим с крепостта на Ниш и спокоен обяд с традиционна сръбска кухня в стария град.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Ниш">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">10 часа</span></div>
+                <div class="meta-row"><span class="meta-lbl">Транспорт</span><span class="meta-val">Частен автомобил</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">Водач, трансфер от хотел, входни такси</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Целогодишно</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">120 EUR / човек</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
 
-<!-- ==================== ПОВЕЧЕ ЕКСКУРЗИИ ==================== -->
-<section aria-label="Още екскурзии" style="background:var(--navy);padding:6rem 5rem;text-align:center;position:relative;overflow:hidden;">
-    <div style="max-width:720px;margin:0 auto;position:relative;z-index:2;">
-        <span class="section-tag">Още дестинации</span>
-        <h2 class="contact-title">Открий <em>повече</em><br>приключения</h2>
-        <div class="title-rule"></div>
-        <p class="contact-intro">Още четири маршрута ви очакват — от балкански столици до скрити водопади. Разгледай пълния списък и избери следващото си приключение.</p>
-        <a href="excursions-bg.html" class="hero-cta" style="opacity:1;animation:none;">Виж всички екскурзии</a>
+<!-- ==================== ЕКСКУРЗИЯ 07 — СКОПИЕ И МАТКА ==================== -->
+<section class="exc-section" id="exc-7" data-tags="nature cross-border city" aria-label="Екскурзия 07 — Скопие и каньона Матка">
+    <div class="exc-banner" data-bg="images/20">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 07</span>
+            <h2>Скопие и каньона Матка</h2>
+            <p class="banner-meta">От <strong>190 EUR</strong> · Апр–Окт · 12+ часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/21.avif" type="image/avif">
+                    <source srcset="images/21.webp" type="image/webp">
+                    <img src="images/21.jpg"
+                     alt="Каньонът Матка, оформен от река Треска"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Каньонът Матка</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/22.avif" type="image/avif">
+                    <source srcset="images/22.webp" type="image/webp">
+                    <img src="images/22.jpg"
+                     alt="Спокойните води под варовиковите скали на Матка"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Разходка с лодка в каньона</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Две столици история, един каньон спокойствие</h3>
+                <p>Столицата на Северна Македония е пример за контрасти — автентичният османски Стар базар стои срещу реката от неокласическия нов център, изграден по проекта „Скопие 2014“. Местен македонски гид се присъединява към нас за два часа, за да сподели перспектива, различна от нашата.</p>
+                <p>Минаваме през Старата крепост, джамията „Султан Мурат“ от 15-ти век, и пресичаме многовековния Камен мост, преди да стигнем площад „Македония“ и триумфалната арка „Порта Македония“. Следобед сменяме историята с природа в каньона Матка, с време за разходка с лодка покрай една от най-дълбоките подводни пещери в света.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Скопие и Матка">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">12+ часа</span></div>
+                <div class="meta-row"><span class="meta-lbl">Транспорт</span><span class="meta-val">Частен автомобил</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">БГ водач + местен МК гид, трансфер от хотел, входни такси</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Април – Октомври</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">190 EUR / човек</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<!-- ==================== ЕКСКУРЗИЯ 08 — СКОПИЕ МАЛКА ГРУПА ==================== -->
+<section class="exc-section" id="exc-8" data-tags="history cross-border city" aria-label="Екскурзия 08 — Скопие, малка група">
+    <div class="exc-banner" data-bg="images/23">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 08</span>
+            <h2>Скопие — малка група</h2>
+            <p class="banner-meta">От <strong>100 EUR</strong> · Целогодишно · 12 часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/24.avif" type="image/avif">
+                    <source srcset="images/24.webp" type="image/webp">
+                    <img src="images/24.jpg"
+                     alt="Площад „Македония“ и паметникът на Александър Велики в Скопие"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Площад „Македония“</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/25.avif" type="image/avif">
+                    <source srcset="images/25.webp" type="image/webp">
+                    <img src="images/25.jpg"
+                     alt="Централно Скопие в ясен ден"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Централно Скопие</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Скопие, без бързане и в малка компания</h3>
+                <p>Отметнете още една балканска столица за един ден, с двама професионални гидове — българин и местен македонец — разказващи и двете страни на историята. Смесицата на Скопие от османски паметници и пищните неокласически сгради от проекта „Скопие 2014“ го прави един от по-изненадващите градове в региона.</p>
+                <p>Акцентите включват Старата крепост, джамията „Султан Мурат“, историческите каравансараи на Стария базар и новия площад „Македония“ с паметника на Александър Велики. Спираме се и на Дома-музей на Майка Тереза, посветен на най-известната родом от Скопие, преди да завършим при арката „Порта Македония“.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Скопие малка група">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">12 часа</span></div>
+                <div class="meta-row"><span class="meta-lbl">Транспорт</span><span class="meta-val">Частен автомобил</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">БГ водач + местен МК гид, трансфер от хотел, входни такси</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Целогодишно</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">100 EUR / човек</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sep" role="separator"></div>
+
+<!-- ==================== ЕКСКУРЗИЯ 09 — ЛОВЕЧ, ДЕВЕТАШКА, КРУШУНА ==================== -->
+<section class="exc-section" id="exc-9" data-tags="nature" aria-label="Екскурзия 09 — Ловеч, Деветашка пещера и Крушунски водопади">
+    <div class="exc-banner" data-bg="images/26">
+        <div class="banner-label">
+            <span class="exc-num">Екскурзия 09</span>
+            <h2>Ловеч, Деветашка пещера &amp; Крушунски водопади</h2>
+            <p class="banner-meta">От <strong>120 EUR</strong> · Целогодишно · 8+ часа</p>
+        </div>
+    </div>
+    <div class="exc-body">
+        <div class="photo-row">
+            <figure class="photo-cell reveal d1">
+                <picture>
+                    <source srcset="images/27.avif" type="image/avif">
+                    <source srcset="images/27.webp" type="image/webp">
+                    <img src="images/27.jpg"
+                     alt="Терасовидните тюркоазени басейни на Крушунските водопади"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Крушунски водопади</figcaption>
+            </figure>
+            <figure class="photo-cell reveal d2">
+                <picture>
+                    <source srcset="images/28.avif" type="image/avif">
+                    <source srcset="images/28.webp" type="image/webp">
+                    <img src="images/28.jpg"
+                     alt="Каскадна вода през гората при Крушуна"
+                     width="800" height="600"
+                     loading="lazy">
+                </picture>
+                <figcaption>Каскади през гората</figcaption>
+            </figure>
+        </div>
+        <div class="exc-details reveal">
+            <div class="exc-text-col">
+                <h3>Исторически град, пещера и бирюзови каскади</h3>
+                <p>Един от непрекъснато населяваните градове на България, старата част на Ловеч възнаграждава бавната разходка по калдъръмените улици покрай къщи от 19-ти век, музея на Васил Левски, крепостта Хисаря и Покрития мост — забележителност от 19-ти век, построена от майстор Кольо Фичето.</p>
+                <p>Оттам е кратко пътуване до Деветашката пещера, огромна карстова зала, използвана някога като военна база, и продължаваме към бирюзовите, терасовидни басейни на Крушунските водопади — разходка през гора и каскадна вода, с която завършва денят.</p>
+                <a href="#contact" class="exc-book" aria-label="Резервирай място за Ловеч и Крушуна">Резервирай място &rarr;</a>
+            </div>
+            <div class="exc-meta-card reveal d1">
+                <div class="meta-row"><span class="meta-lbl">Продължителност</span><span class="meta-val">8+ часа</span></div>
+                <div class="meta-row"><span class="meta-lbl">Транспорт</span><span class="meta-val">Частен автомобил</span></div>
+                <div class="meta-row"><span class="meta-lbl">Включено</span><span class="meta-val">Водач, трансфер от хотел, входни такси</span></div>
+                <div class="meta-row"><span class="meta-lbl">Сезон</span><span class="meta-val">Целогодишно</span></div>
+                <div class="meta-row"><span class="meta-lbl">Цена от</span><span class="meta-val">120 EUR / човек</span></div>
+            </div>
+        </div>
     </div>
 </section>
 
