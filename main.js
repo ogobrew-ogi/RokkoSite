@@ -341,6 +341,8 @@ if (contactForm) {
     var searchInput = document.getElementById('tripSearch');
     var chips       = document.querySelectorAll('.filter-chip');
     var emptyMsg    = document.getElementById('tripEmpty');
+    var countEl     = document.getElementById('tripCount');
+    var countNum    = countEl && countEl.querySelector('strong');
     var activeFilter = 'all';
 
     function revealNow(section) {
@@ -367,6 +369,8 @@ if (contactForm) {
             if (show) { visible++; revealNow(section); }
         });
         if (emptyMsg) emptyMsg.classList.toggle('is-visible', visible === 0);
+        if (countNum) countNum.textContent = String(visible);
+        if (countEl) countEl.style.display = visible === 0 ? 'none' : '';
     }
 
     chips.forEach(function (chip) {

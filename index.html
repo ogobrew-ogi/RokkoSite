@@ -256,41 +256,20 @@
     </div>
 </section>
 
-<!-- ==================== REVIEWS (TEMPLATE) ==================== -->
-<section class="reviews" aria-label="Reviews">
-    <div class="reviews-inner">
-        <span class="section-tag">Trust</span>
-        <h2 class="reviews-title">People choose us for the <em>details</em></h2>
-        <p class="reviews-sub">These are sample reviews (placeholders). Replace them with real reviews or a source (Google/Facebook).</p>
-
-        <div class="rating-row" aria-label="Rating (sample)">
-            <span class="rating-badge">★ 4.9 / 5</span>
-            <span class="rating-note">based on (PLACEHOLDER) 128 reviews</span>
-        </div>
-
-        <div class="review-grid">
-            <figure class="review-card reveal d1">
-                <blockquote>“Perfect organization and an amazing guide. Would do it again!”</blockquote>
-                <figcaption>— (PLACEHOLDER) Name, city/date</figcaption>
-            </figure>
-            <figure class="review-card reveal d2">
-                <blockquote>“Clean transport, on time, and beautiful spots. Highly recommended.”</blockquote>
-                <figcaption>— (PLACEHOLDER) Name, city/date</figcaption>
-            </figure>
-            <figure class="review-card reveal d3">
-                <blockquote>“Great for families—balanced pace and plenty of time to enjoy.”</blockquote>
-                <figcaption>— (PLACEHOLDER) Name, city/date</figcaption>
-            </figure>
-        </div>
+<!-- ==================== FIND A TRIP ==================== -->
+<section class="trip-finder" aria-label="Find a trip" id="trips">
+    <div class="trip-finder-head">
+        <span class="section-tag">Find your trip</span>
+        <h2 class="trip-finder-title">9 <em>guided day trips</em><br>from Sofia</h2>
+        <p class="trip-finder-sub">Search by destination, or filter by theme to find exactly what you're looking for.</p>
     </div>
-</section>
-
-<!-- ==================== TRIP FILTER ==================== -->
-<section class="trip-filter" aria-label="Find a trip" id="trips">
-    <div class="trip-filter-inner">
-        <input type="search" class="trip-search" id="tripSearch"
-               placeholder="Search trips — e.g. hiking, Plovdiv, caves…"
-               aria-label="Search trips">
+    <div class="trip-finder-controls">
+        <div class="trip-search-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="search" class="trip-search" id="tripSearch"
+                   placeholder="Search trips — e.g. hiking, Plovdiv, caves…"
+                   aria-label="Search trips">
+        </div>
         <div class="filter-chips" role="group" aria-label="Filter by category">
             <button type="button" class="filter-chip is-active" data-filter="all">All trips</button>
             <button type="button" class="filter-chip" data-filter="history">History</button>
@@ -298,7 +277,8 @@
             <button type="button" class="filter-chip" data-filter="unesco">UNESCO</button>
             <button type="button" class="filter-chip" data-filter="cross-border">Cross-border</button>
         </div>
-        <p class="trip-empty" id="tripEmpty">No trips match — try a different search or filter.</p>
+        <p class="trip-count" id="tripCount" aria-live="polite"><strong>9</strong> of 9 trips</p>
+        <p class="trip-empty" id="tripEmpty" aria-live="polite">No trips match — try a different search or filter.</p>
     </div>
 </section>
 

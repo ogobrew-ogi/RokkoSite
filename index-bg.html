@@ -289,41 +289,20 @@
     </div>
 </section>
 
-<!-- ==================== ОТЗИВИ (ШАБЛОН) ==================== -->
-<section class="reviews" aria-label="Отзиви">
-    <div class="reviews-inner">
-        <span class="section-tag">Доверие</span>
-        <h2 class="reviews-title">Хората ни избират заради <em>детайлите</em></h2>
-        <p class="reviews-sub">Тук са примерни отзиви (placeholders). Замени ги с реални мнения или източник (Google/FB).</p>
-
-        <div class="rating-row" aria-label="Рейтинг (пример)">
-            <span class="rating-badge">★ 4.9 / 5</span>
-            <span class="rating-note">на база (PLACEHOLDER) 128 отзива</span>
-        </div>
-
-        <div class="review-grid">
-            <figure class="review-card reveal d1">
-                <blockquote>„Организацията беше перфектна, а водачът разказваше супер интересно. Бих повторил!“</blockquote>
-                <figcaption>— (PLACEHOLDER) Име, гр./дата</figcaption>
-            </figure>
-            <figure class="review-card reveal d2">
-                <blockquote>„Чист транспорт, точни часове и много красиви места. Силно препоръчвам.“</blockquote>
-                <figcaption>— (PLACEHOLDER) Име, гр./дата</figcaption>
-            </figure>
-            <figure class="review-card reveal d3">
-                <blockquote>„Страхотно за семейства — има време и за разходка, и за почивка. Благодарим!“</blockquote>
-                <figcaption>— (PLACEHOLDER) Име, гр./дата</figcaption>
-            </figure>
-        </div>
+<!-- ==================== НАМЕРИ ЕКСКУРЗИЯ ==================== -->
+<section class="trip-finder" aria-label="Намери екскурзия" id="trips">
+    <div class="trip-finder-head">
+        <span class="section-tag">Намери своята екскурзия</span>
+        <h2 class="trip-finder-title">9 <em>екскурзии с водач</em><br>от София</h2>
+        <p class="trip-finder-sub">Търси по дестинация, или филтрирай по тема, за да намериш точно това, което търсиш.</p>
     </div>
-</section>
-
-<!-- ==================== ФИЛТЪР НА ЕКСКУРЗИИ ==================== -->
-<section class="trip-filter" aria-label="Намери екскурзия" id="trips">
-    <div class="trip-filter-inner">
-        <input type="search" class="trip-search" id="tripSearch"
-               placeholder="Търси екскурзия — напр. хайкинг, Пловдив, пещери…"
-               aria-label="Търси екскурзии">
+    <div class="trip-finder-controls">
+        <div class="trip-search-wrap">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="search" class="trip-search" id="tripSearch"
+                   placeholder="Търси екскурзия — напр. хайкинг, Пловдив, пещери…"
+                   aria-label="Търси екскурзии">
+        </div>
         <div class="filter-chips" role="group" aria-label="Филтър по категория">
             <button type="button" class="filter-chip is-active" data-filter="all">Всички</button>
             <button type="button" class="filter-chip" data-filter="history">История</button>
@@ -331,7 +310,8 @@
             <button type="button" class="filter-chip" data-filter="unesco">ЮНЕСКО</button>
             <button type="button" class="filter-chip" data-filter="cross-border">Отвъд границата</button>
         </div>
-        <p class="trip-empty" id="tripEmpty">Няма съвпадения — пробвай друго търсене или филтър.</p>
+        <p class="trip-count" id="tripCount" aria-live="polite"><strong>9</strong> от 9 екскурзии</p>
+        <p class="trip-empty" id="tripEmpty" aria-live="polite">Няма съвпадения — пробвай друго търсене или филтър.</p>
     </div>
 </section>
 

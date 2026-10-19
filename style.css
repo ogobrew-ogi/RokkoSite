@@ -991,24 +991,67 @@ footer p {
     50%       { opacity: 0.35; transform: scaleY(0.75); }
 }
 
-/* ===== TRIP FILTER (search + category chips) ===== */
-.trip-filter {
+/* ===== TRIP FINDER (search + category chips) =====
+   Replaces the old placeholder reviews section — first thing after
+   the hero, so finding a trip among 9 doesn't require scrolling. */
+.trip-finder {
     background: var(--white);
-    padding: 0 5rem 4rem;
+    padding: 6rem 5rem 2.5rem;
+}
+.trip-finder-head {
+    max-width: 720px;
+    margin: 0 auto;
     text-align: center;
 }
-.trip-filter-inner { max-width: 900px; margin: 0 auto; }
+.trip-finder-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--navy);
+    margin: 0.6rem 0 0;
+}
+.trip-finder-title em { font-style: italic; color: var(--ocean); }
+.trip-finder-sub {
+    color: var(--text-muted);
+    max-width: 620px;
+    margin: 1.4rem auto 0;
+    line-height: 1.85;
+    font-size: 0.95rem;
+}
+
+/* Sticky control card: search + chips stay reachable while scrolling
+   through the 9 trips below, instead of forcing a scroll back up. */
+.trip-finder-controls {
+    position: sticky;
+    top: 72px;
+    z-index: 40;
+    max-width: 920px;
+    margin: 2.4rem auto 0;
+    background: var(--light);
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(13, 27, 42, 0.07);
+    padding: 1.6rem 1.8rem;
+}
+
+.trip-search-wrap { position: relative; }
+.trip-search-wrap svg {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+}
 .trip-search {
     display: block;
     width: 100%;
-    max-width: 420px;
-    margin: 0 auto 1.4rem;
     background: white;
     border: 1px solid var(--border);
     color: var(--text);
-    padding: 0.85rem 1.2rem;
+    padding: 0.95rem 1.2rem 0.95rem 2.7rem;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     outline: none;
     transition: border-color 0.3s, box-shadow 0.3s;
     -webkit-appearance: none;
@@ -1021,39 +1064,49 @@ footer p {
 .filter-chips {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 0.6rem;
+    margin-top: 1.1rem;
 }
 .filter-chip {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
     color: var(--navy);
-    border: 1px solid rgba(33, 150, 196, 0.22);
-    background: rgba(168, 216, 234, 0.25);
-    padding: 0.55rem 1.1rem;
+    border: 1px solid rgba(33, 150, 196, 0.25);
+    background: white;
+    padding: 0.65rem 1.3rem;
+    min-height: 44px;
     cursor: pointer;
-    transition: background 0.25s, color 0.25s, border-color 0.25s;
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.15s;
 }
-.filter-chip:hover { border-color: var(--azure); }
+.filter-chip:hover { border-color: var(--azure); transform: translateY(-1px); }
 .filter-chip.is-active {
     background: var(--navy);
     border-color: var(--navy);
     color: white;
 }
+.trip-count {
+    margin-top: 1.1rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+}
+.trip-count strong { color: var(--navy); }
 .trip-empty {
     display: none;
     color: var(--text-muted);
     font-size: 0.92rem;
-    padding: 2.5rem 0 0;
+    padding: 1rem 0 0;
 }
 .trip-empty.is-visible { display: block; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 960px) {
     nav { padding: 1rem 2rem; }
-    .trip-filter { padding: 0 2rem 3rem; }
+    .trip-finder { padding: 4.5rem 2rem 2rem; }
+    .trip-finder-controls { padding: 1.2rem 1.1rem; }
+    .filter-chip { font-size: 0.72rem; padding: 0.6rem 1.05rem; }
     nav.scrolled { padding: 0.75rem 2rem; }
 
     .nav-links {
