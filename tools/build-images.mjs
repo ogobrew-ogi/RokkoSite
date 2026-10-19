@@ -27,8 +27,8 @@ const SIZES = {
     photo: { width: 800, height: 600 },
 };
 
-// Trip 1-5 (live): 1 = hero, then banner/photo/photo per trip.
-// Trip 6-11 (placeholders 17-34): same banner/photo/photo pattern.
+// 9 trips total: 1 = hero, then banner/photo/photo per trip (trips 1-5 on
+// the homepage, 6-9 on the "More trips" page).
 const SLOTS = {
     1: 'banner', // hero image, same wide crop as a banner
     2: 'banner', 3: 'photo', 4: 'photo',
@@ -40,8 +40,6 @@ const SLOTS = {
     20: 'banner', 21: 'photo', 22: 'photo',
     23: 'banner', 24: 'photo', 25: 'photo',
     26: 'banner', 27: 'photo', 28: 'photo',
-    29: 'banner', 30: 'photo', 31: 'photo',
-    32: 'banner', 33: 'photo', 34: 'photo',
 };
 
 const SOURCE_EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.tif', '.tiff'];
