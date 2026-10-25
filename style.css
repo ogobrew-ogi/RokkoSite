@@ -466,6 +466,30 @@ nav.menu-open {
     background-color: var(--navy); /* fallback докато JS зарежда снимката */
     position: relative;
 }
+/* The partner-stay banner is an <a>, not a <div> — undo link defaults */
+a.exc-banner { display: block; text-decoration: none; cursor: pointer; }
+a.exc-banner:hover .banner-label { background: linear-gradient(to top, rgba(13, 27, 42, 0.92) 0%, transparent 100%); }
+/* Same look as .hero-cta, minus its hero-entrance fade (this button lives
+   further down the page, not in the hero) */
+.partner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(200, 169, 110, 0.65);
+    color: white;
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+}
+a.exc-banner:hover .partner-cta {
+    background: var(--sand);
+    border-color: var(--sand);
+    color: var(--navy);
+}
 .exc-banner::after {
     content: '';
     position: absolute; inset: 0;

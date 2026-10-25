@@ -40,6 +40,7 @@ const SLOTS = {
     20: 'banner', 21: 'photo', 22: 'photo',
     23: 'banner', 24: 'photo', 25: 'photo',
     26: 'banner', 27: 'photo', 28: 'photo',
+    29: 'banner', // Siapartments partner-stay banner (not a trip, see index.html)
 };
 
 const SOURCE_EXTS = ['.jpg', '.jpeg', '.png', '.webp', '.tif', '.tiff'];
