@@ -1,3 +1,7 @@
+# ============================================================
+# PRE-LAUNCH: site is not ready to be indexed yet.
+# TODO: remove the Disallow line (and restore "Allow: /") once
+# content/pricing/contact details are final and we're ready to go live.
+# ============================================================
 User-agent: *
-Allow: /
-Sitemap: /sitemap.xml
+Disallow: /

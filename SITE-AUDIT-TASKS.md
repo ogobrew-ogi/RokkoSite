@@ -1,5 +1,13 @@
 # ROKKO / LAZUR Day Trips — Анализ на сайта и задачи
 
+## ⚠️ Сайтът НЕ е достъпен за индексиране (добавено 2026-10-25)
+Преди реално качване в Cloudflare — нарочно блокирахме Google/всички роботи на 3 нива, докато не сме готови за launch:
+1. `robots.txt` → `Disallow: /` (беше `Allow: /`)
+2. `<meta name="robots" content="noindex, nofollow">` в `index.html` + `index-bg.html`
+3. `X-Robots-Tag: noindex, nofollow` в `_headers` (важи за целия сайт, дори не-HTML файлове)
+
+**Преди истинския launch — трите промени трябва да се махнат**, иначе сайтът остава невидим за Google завинаги. Всяка промяна е маркирана с `PRE-LAUNCH` коментар в кода за лесно откриване.
+
 Дата на последно обновяване: 2026-10-19
 Статичен сайт (без build стъпка), хостван в Cloudflare Pages. Директория: `PROJECT_ROKO_SITE`.
 Git repo: инициализиран и push-нат — **https://github.com/ogobrew-ogi/RokkoSite** (branch `main`).
