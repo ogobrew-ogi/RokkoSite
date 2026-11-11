@@ -1054,7 +1054,10 @@ footer p {
     z-index: 900;
     width: 50px; height: 50px;
     background: var(--navy);
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    /* Sand border + soft shadow: the button often sits over navy sections
+       and dark photos, where a faint white border made it disappear. */
+    border: 1px solid rgba(200, 169, 110, 0.7);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
     color: white;
     cursor: pointer;
     display: flex;
@@ -1264,6 +1267,19 @@ footer p {
 
     .reviews { padding: 5rem 2rem; }
     .review-grid { grid-template-columns: 1fr; }
+
+    /* Back-to-top on phones: on pages with the fixed bottom CTA bar
+       (~71px tall, higher z-index) it used to sit half-hidden behind the
+       bar. Lift it above the bar (+ iPhone safe area) and use the 44px
+       minimum touch target. */
+    #top-btn {
+        width: 44px; height: 44px;
+        right: 1rem;
+        bottom: calc(1.25rem + env(safe-area-inset-bottom));
+    }
+    body:has(.mobile-cta) #top-btn {
+        bottom: calc(71px + 0.75rem + env(safe-area-inset-bottom));
+    }
 
     .mobile-cta {
         display: grid;
