@@ -45,6 +45,8 @@
             display: block;
         }
         .logo span { color: var(--sand); }
+        .logo--img { line-height: 0; letter-spacing: 0; }
+        .logo--img img { display: block; height: 100px; width: auto; margin: 0 auto; }
         .code {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(5rem, 18vw, 10rem);
@@ -99,7 +101,7 @@
     </style>
 </head>
 <body>
-    <a href="/" class="logo">RO<span>K</span>KO</a>
+    <a href="/" class="logo logo--img"><picture><source type="image/webp" srcset="/images/brand/roscoes-logo-180.webp 180w, /images/brand/roscoes-logo-360.webp 360w, /images/brand/roscoes-logo-540.webp 540w" sizes="200px"><img src="/images/brand/roscoes-logo-360.png" srcset="/images/brand/roscoes-logo-180.png 180w, /images/brand/roscoes-logo-360.png 360w, /images/brand/roscoes-logo-540.png 540w" sizes="200px" alt="Roscoe's Travels" width="180" height="91" decoding="async"></picture></a>
     <div class="code" aria-hidden="true">404</div>
     <h1>Тази страница <em>изчезна</em><br>в синьото море</h1>
     <div class="divider"></div>

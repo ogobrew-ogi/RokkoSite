@@ -206,7 +206,7 @@
 
 <!-- ==================== NAVIGATION ==================== -->
 <nav id="navbar">
-    <a href="#home" class="logo">RO<span>K</span>KO</a>
+    <a href="#home" class="logo logo--img"><picture><source type="image/webp" srcset="images/brand/roscoes-logo-180.webp 180w, images/brand/roscoes-logo-360.webp 360w, images/brand/roscoes-logo-540.webp 540w" sizes="(max-width: 960px) 104px, 144px"><img src="images/brand/roscoes-logo-360.png" srcset="images/brand/roscoes-logo-180.png 180w, images/brand/roscoes-logo-360.png 360w, images/brand/roscoes-logo-540.png 540w" sizes="(max-width: 960px) 104px, 144px" alt="Roscoe's Travels" width="180" height="91" decoding="async"></picture></a>
     <ul class="nav-links" id="navLinks">
         <li><a href="#trips">Trips</a></li>
         <li><a href="https://siapartments.eu" target="_blank" rel="noopener">Stay in Sofia</a></li>
@@ -282,17 +282,6 @@
         </div>
         <p class="trip-count" id="tripCount" aria-live="polite"><strong>9</strong> of 9 trips</p>
         <p class="trip-empty" id="tripEmpty" aria-live="polite">No trips match — try a different search or filter.</p>
-    </div>
-</section>
-
-<!-- ==================== PARTNER STAY (Siapartments) ==================== -->
-<section aria-label="Where to stay — Siapartments" style="background:var(--navy);padding:4.5rem 5rem;text-align:center;position:relative;overflow:hidden;">
-    <div style="max-width:620px;margin:0 auto;position:relative;z-index:2;">
-        <span class="section-tag">Partner Stay</span>
-        <h2 class="contact-title">Stays in <em>Sofia</em></h2>
-        <div class="title-rule"></div>
-        <p class="contact-intro">4 curated apartments in the city center, run by our partner Siapartments — from &euro;55 / night.</p>
-        <a href="https://siapartments.eu" target="_blank" rel="noopener" class="hero-cta" style="opacity:1;animation:none;">View apartments</a>
     </div>
 </section>
 
@@ -774,6 +763,27 @@
 </section>
 
 
+<!-- ==================== PARTNER STAY (Siapartments) ==================== -->
+<!-- After the last trip on purpose: a cross-sell works once visitors have
+     browsed the trips, not between the trip search and its results. -->
+<section class="partner-stay" aria-label="Where to stay — Siapartments">
+    <div class="partner-stay-inner">
+        <div class="partner-stay-text">
+            <span class="partner-stay-tag">Partner stay</span>
+            <h2 class="partner-stay-title">Staying the night in <em>Sofia</em>?</h2>
+            <p class="partner-stay-intro">Three apartments and a house in the city center, run by our partner Siapartments. Prices per night:</p>
+            <ul class="partner-stay-options" aria-label="Stays by group size">
+                <li><span class="po-kind">Studio</span><span class="po-guests">3 guests</span><span class="po-price">&euro;55</span></li>
+                <li><span class="po-kind">Apartment</span><span class="po-guests">4 guests</span><span class="po-price">&euro;70</span></li>
+                <li><span class="po-kind">Apartment</span><span class="po-guests">5 guests</span><span class="po-price">&euro;90</span></li>
+                <li><span class="po-kind">House</span><span class="po-guests">7 guests</span><span class="po-price">&euro;100</span></li>
+            </ul>
+        </div>
+        <a href="https://siapartments.eu" target="_blank" rel="noopener" class="partner-stay-link">See all stays <span aria-hidden="true">&rarr;</span></a>
+    </div>
+</section>
+
+
 <!-- ==================== CONTACT ==================== -->
 <section id="contact" aria-label="Contact form">
     <div class="contact-inner">
@@ -882,8 +892,8 @@
 
 <!-- ==================== FOOTER ==================== -->
 <footer>
-    <a href="#home" class="logo" style="font-size:1.35rem;">RO<span>K</span>KO</a>
-    <p>© 2026 Rokko Day Trips</p>
+    <a href="#home" class="logo logo--img logo--footer"><picture><source type="image/webp" srcset="images/brand/roscoes-logo-180.webp 180w, images/brand/roscoes-logo-360.webp 360w, images/brand/roscoes-logo-540.webp 540w" sizes="104px"><img src="images/brand/roscoes-logo-360.png" srcset="images/brand/roscoes-logo-180.png 180w, images/brand/roscoes-logo-360.png 360w, images/brand/roscoes-logo-540.png 540w" sizes="104px" alt="Roscoe's Travels" width="180" height="91" decoding="async"></picture></a>
+    <p>© 2026 Roscoe's Travels</p>
     <p>
         <a href="privacy-policy.html" style="color:rgba(255,255,255,0.45);text-decoration:underline;text-underline-offset:3px;">Privacy Policy</a>
         &nbsp;·&nbsp;
